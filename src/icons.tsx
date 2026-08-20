@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import type { SVGProps } from 'react';
 
 type IconProps = SVGProps<SVGSVGElement> & { title?: string };
 
@@ -6,7 +6,7 @@ function IconBase({ title, children, ...props }: IconProps) {
   return (
     <svg
       aria-hidden={title ? undefined : true}
-      role={title ? "img" : undefined}
+      role={title ? 'img' : undefined}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -30,25 +30,34 @@ export function SearchIcon(props: IconProps) {
   );
 }
 
-export function BookmarkIcon({ filled = false, ...props }: IconProps & { filled?: boolean }) {
+export function BookmarkIcon({
+  filled = false,
+  ...props
+}: IconProps & { filled?: boolean }) {
   return (
-    <IconBase {...props} fill={filled ? "currentColor" : "none"}>
+    <IconBase {...props} fill={filled ? 'currentColor' : 'none'}>
       <path d="M6.5 4.5A1.5 1.5 0 0 1 8 3h8a1.5 1.5 0 0 1 1.5 1.5V21L12 17.5 6.5 21Z" />
     </IconBase>
   );
 }
 
-export function FlameIcon({ filled = false, ...props }: IconProps & { filled?: boolean }) {
+export function FlameIcon({
+  filled = false,
+  ...props
+}: IconProps & { filled?: boolean }) {
   return (
-    <IconBase {...props} fill={filled ? "currentColor" : "none"}>
+    <IconBase {...props} fill={filled ? 'currentColor' : 'none'}>
       <path d="M13.5 2.5c.8 4.2-2.8 5.2-1.2 8.2.8 1.5 2.5 1.2 3.2.1.8-1.1.7-2.8.4-3.8 2.3 2 4.1 4.4 4.1 7.2 0 4-3.1 7-7.8 7-4.4 0-7.2-2.8-7.2-6.8 0-4 2.4-6.4 5.7-9.2-.3 3.2 1 4.7 2.4 4.8 2.2.2 2.7-2.7 2.8-4.8Z" />
     </IconBase>
   );
 }
 
-export function StarIcon({ filled = false, ...props }: IconProps & { filled?: boolean }) {
+export function StarIcon({
+  filled = false,
+  ...props
+}: IconProps & { filled?: boolean }) {
   return (
-    <IconBase {...props} fill={filled ? "currentColor" : "none"}>
+    <IconBase {...props} fill={filled ? 'currentColor' : 'none'}>
       <path d="m12 2.8 2.8 5.7 6.3.9-4.6 4.5 1.1 6.3-5.6-3-5.6 3 1.1-6.3-4.6-4.5 6.3-.9Z" />
     </IconBase>
   );
@@ -108,9 +117,18 @@ export function ChevronIcon(props: IconProps) {
   );
 }
 
-export function ArrowIcon({ direction = "right", ...props }: IconProps & { direction?: "left" | "right" }) {
+export function ArrowIcon({
+  direction = 'right',
+  ...props
+}: IconProps & { direction?: 'left' | 'right' }) {
   return (
-    <IconBase {...props} style={{ transform: direction === "left" ? "rotate(180deg)" : undefined, ...props.style }}>
+    <IconBase
+      {...props}
+      style={{
+        transform: direction === 'left' ? 'rotate(180deg)' : undefined,
+        ...props.style,
+      }}
+    >
       <path d="M5 12h14M14 7l5 5-5 5" />
     </IconBase>
   );

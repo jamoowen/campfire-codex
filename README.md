@@ -18,7 +18,6 @@ A warm, dungeon-campfire recipe finder built as a React single-page app plus a C
 
 > The app is deliberately bot-hostile, not bot-proof. Anything displayed to a human browser can eventually be collected by a sufficiently determined scraper.
 
-
 ## Personal data behavior
 
 The app stores this information only in the visitor's browser:
@@ -37,22 +36,28 @@ There is no server-side user table and no cross-device sync. Clearing browser st
 
 ## Useful commands
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm dev` | Run React and the Worker locally through the Cloudflare Vite plugin |
-| `pnpm check` | Type-check, run automated tests, run the privacy scan, and verify demo data |
-| `pnpm test` | Run local importer and Cloudflare Worker API tests |
-| `pnpm build` | Create the production build |
-| `pnpm preview` | Build and preview production output locally |
-| `pnpm deploy` | Check, build, and deploy to Cloudflare Workers |
-| `pnpm cf:login` | Log in to Cloudflare |
-| `pnpm cf:whoami` | Show the active Cloudflare account |
-| `pnpm cloudflare:setup` | Create/check R2 and upload the private catalogue |
-| `pnpm recipes:build` | Normalize and validate `private/recipes.json` |
-| `pnpm recipes:seed:local` | Upload the catalogue to local simulated R2 |
-| `pnpm recipes:upload` | Upload the catalogue to production R2 |
-| `pnpm privacy:check` | Scan public/source files for known private-data markers |
-| `pnpm clean` | Remove generated build and local Cloudflare state |
+| Command                   | Purpose                                                                     |
+| ------------------------- | --------------------------------------------------------------------------- |
+| `pnpm dev`                | Run React and the Worker locally through the Cloudflare Vite plugin         |
+| `pnpm check`              | Type-check, run automated tests, run the privacy scan, and verify demo data |
+| `pnpm test`               | Run local importer and Cloudflare Worker API tests                          |
+| `pnpm lint`               | Run Oxlint across browser, Worker, shared, script, and test code            |
+| `pnpm lint:fix`           | Apply Oxlint fixes where they are safe                                      |
+| `pnpm format:check`       | Check Prettier formatting                                                   |
+| `pnpm format`             | Format public/source files with Prettier                                    |
+| `pnpm audit`              | Fail on high- or critical-severity dependency advisories                    |
+| `pnpm validate`           | Run linting, formatting, checks, and the dependency audit                   |
+| `pnpm build`              | Create the production build                                                 |
+| `pnpm preview`            | Build and preview production output locally                                 |
+| `pnpm deploy`             | Validate, build, and deploy to Cloudflare Workers                           |
+| `pnpm cf:login`           | Log in to Cloudflare                                                        |
+| `pnpm cf:whoami`          | Show the active Cloudflare account                                          |
+| `pnpm cloudflare:setup`   | Create/check R2 and upload the private catalogue                            |
+| `pnpm recipes:build`      | Normalize and validate `private/recipes.json`                               |
+| `pnpm recipes:seed:local` | Upload the catalogue to local simulated R2                                  |
+| `pnpm recipes:upload`     | Upload the catalogue to production R2                                       |
+| `pnpm privacy:check`      | Scan public/source files for known private-data markers                     |
+| `pnpm clean`              | Remove generated build and local Cloudflare state                           |
 
 ## Project map
 
@@ -75,7 +80,7 @@ wrangler.jsonc              Worker, R2, rate-limit, and SPA configuration
 
 ## CI and deployment
 
-GitHub Actions validates every pull request and every push to `main` with a frozen pnpm install, `pnpm check`, build, and a Wrangler dry-run. Only a successful push to `main` builds its own static bundle and deploys the Worker. CI never runs a recipe build, seed, or upload command; production R2 data remains an owner-managed operation.
+GitHub Actions validates every pull request and every push to `main` with a frozen pnpm install, linting, Prettier formatting, `pnpm check`, a high/critical dependency audit, build, and a Wrangler dry-run. Only a successful push to `main` builds its own static bundle and deploys the Worker. CI never runs a recipe build, seed, or upload command; production R2 data remains an owner-managed operation.
 
 Before enabling deployment, add these production environment secrets in GitHub: `Settings → Environments → production → Environment secrets`.
 

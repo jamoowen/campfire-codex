@@ -1,8 +1,14 @@
-import type { ViewMode } from "./AppHeader";
-import { BookmarkIcon, FlameIcon, SearchIcon } from "../icons";
+import type { ViewMode } from './AppHeader';
+import { BookmarkIcon, FlameIcon, SearchIcon } from '../icons';
 
-export function EmptyState({ view, filtered }: { view: ViewMode; filtered: boolean }) {
-  if (view === "saved") {
+export function EmptyState({
+  view,
+  filtered,
+}: {
+  view: ViewMode;
+  filtered: boolean;
+}) {
+  if (view === 'saved') {
     return (
       <div className="empty-state">
         <BookmarkIcon />
@@ -11,20 +17,30 @@ export function EmptyState({ view, filtered }: { view: ViewMode; filtered: boole
       </div>
     );
   }
-  if (view === "cooked") {
+  if (view === 'cooked') {
     return (
       <div className="empty-state">
         <FlameIcon />
         <h3>No culinary victories recorded.</h3>
-        <p>Cook something, then claim the credit before anyone asks questions.</p>
+        <p>
+          Cook something, then claim the credit before anyone asks questions.
+        </p>
       </div>
     );
   }
   return (
     <div className="empty-state">
       <SearchIcon />
-      <h3>{filtered ? "The dungeon contains no such beast." : "Nothing in the pantry."}</h3>
-      <p>{filtered ? "Remove a filter or use fewer adjectives." : "Upload the private catalogue and try again."}</p>
+      <h3>
+        {filtered
+          ? 'The dungeon contains no such beast.'
+          : 'Nothing in the pantry.'}
+      </h3>
+      <p>
+        {filtered
+          ? 'Remove a filter or use fewer adjectives.'
+          : 'Upload the private catalogue and try again.'}
+      </p>
     </div>
   );
 }

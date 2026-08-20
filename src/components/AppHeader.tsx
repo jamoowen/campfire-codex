@@ -1,7 +1,7 @@
-import { BookmarkIcon, FlameIcon, InfoIcon, SearchIcon } from "../icons";
-import { Brand } from "./Brand";
+import { BookmarkIcon, FlameIcon, InfoIcon, SearchIcon } from '../icons';
+import { Brand } from './Brand';
 
-export type ViewMode = "explore" | "saved" | "cooked";
+export type ViewMode = 'explore' | 'saved' | 'cooked';
 
 interface AppHeaderProps {
   view: ViewMode;
@@ -20,33 +20,43 @@ export function AppHeader({
 }: AppHeaderProps) {
   return (
     <header className="topbar">
-      <button className="brand-button" type="button" onClick={() => onViewChange("explore")}>
+      <button
+        className="brand-button"
+        type="button"
+        onClick={() => onViewChange('explore')}
+      >
         <Brand compact />
       </button>
       <nav className="topnav" aria-label="Primary navigation">
         <button
           type="button"
-          className={view === "explore" ? "topnav__item is-active" : "topnav__item"}
-          onClick={() => onViewChange("explore")}
+          className={
+            view === 'explore' ? 'topnav__item is-active' : 'topnav__item'
+          }
+          onClick={() => onViewChange('explore')}
         >
           <SearchIcon />
           <span>Explore</span>
         </button>
         <button
           type="button"
-          className={view === "saved" ? "topnav__item is-active" : "topnav__item"}
-          onClick={() => onViewChange("saved")}
+          className={
+            view === 'saved' ? 'topnav__item is-active' : 'topnav__item'
+          }
+          onClick={() => onViewChange('saved')}
         >
-          <BookmarkIcon filled={view === "saved"} />
+          <BookmarkIcon filled={view === 'saved'} />
           <span>Saved</span>
           {savedCount > 0 ? <b>{savedCount}</b> : null}
         </button>
         <button
           type="button"
-          className={view === "cooked" ? "topnav__item is-active" : "topnav__item"}
-          onClick={() => onViewChange("cooked")}
+          className={
+            view === 'cooked' ? 'topnav__item is-active' : 'topnav__item'
+          }
+          onClick={() => onViewChange('cooked')}
         >
-          <FlameIcon filled={view === "cooked"} />
+          <FlameIcon filled={view === 'cooked'} />
           <span>Cooked</span>
           {cookedCount > 0 ? <b>{cookedCount}</b> : null}
         </button>

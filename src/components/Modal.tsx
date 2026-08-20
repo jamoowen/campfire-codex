@@ -1,5 +1,5 @@
-import { useEffect, useRef, type ReactNode } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useRef, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 interface ModalProps {
   open: boolean;
@@ -9,29 +9,39 @@ interface ModalProps {
   children: ReactNode;
 }
 
-export function Modal({ open, onClose, labelledBy, className = "", children }: ModalProps) {
+export function Modal({
+  open,
+  onClose,
+  labelledBy,
+  className = '',
+  children,
+}: ModalProps) {
   const surfaceRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!open) return;
-    const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    document.body.classList.add("modal-open");
+    const previous =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    document.body.classList.add('modal-open');
     const selector =
       "button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])";
     const timer = window.setTimeout(() => {
-      const focusable = surfaceRef.current?.querySelector<HTMLElement>(selector);
+      const focusable =
+        surfaceRef.current?.querySelector<HTMLElement>(selector);
       (focusable ?? surfaceRef.current)?.focus();
     }, 0);
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         onClose();
         return;
       }
-      if (event.key !== "Tab" || !surfaceRef.current) return;
+      if (event.key !== 'Tab' || !surfaceRef.current) return;
 
-      const focusable = [...surfaceRef.current.querySelectorAll<HTMLElement>(selector)].filter(
-        (element) => element.getClientRects().length > 0,
-      );
+      const focusable = [
+        ...surfaceRef.current.querySelectorAll<HTMLElement>(selector),
+      ].filter((element) => element.getClientRects().length > 0);
       if (focusable.length === 0) {
         event.preventDefault();
         surfaceRef.current.focus();
@@ -48,11 +58,11 @@ export function Modal({ open, onClose, labelledBy, className = "", children }: M
         first.focus();
       }
     };
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener('keydown', onKeyDown);
     return () => {
       window.clearTimeout(timer);
-      window.removeEventListener("keydown", onKeyDown);
-      document.body.classList.remove("modal-open");
+      window.removeEventListener('keydown', onKeyDown);
+      document.body.classList.remove('modal-open');
       previous?.focus();
     };
   }, [onClose, open]);
@@ -60,12 +70,13 @@ export function Modal({ open, onClose, labelledBy, className = "", children }: M
   if (!open) return null;
 
   return createPortal(
-    <div
-      className="modal-backdrop"
-      onMouseDown={(event) => {
-        if (event.currentTarget === event.target) onClose();
-      }}
-    >
+    <div className="modal-backdrop">
+      <button
+        type="button"
+        className="modal-backdrop__dismiss"
+        aria-label="Close dialog"
+        onClick={onClose}
+      />
       <section
         ref={surfaceRef}
         className={`modal-surface ${className}`}

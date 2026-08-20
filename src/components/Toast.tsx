@@ -1,12 +1,18 @@
-import { useEffect } from "react";
-import { CloseIcon } from "../icons";
+import { useEffect } from 'react';
+import { CloseIcon } from '../icons';
 
 export interface ToastMessage {
   id: number;
   text: string;
 }
 
-export function Toast({ toast, onDismiss }: { toast: ToastMessage | null; onDismiss: () => void }) {
+export function Toast({
+  toast,
+  onDismiss,
+}: {
+  toast: ToastMessage | null;
+  onDismiss: () => void;
+}) {
   useEffect(() => {
     if (!toast) return;
     const timer = window.setTimeout(onDismiss, 3200);

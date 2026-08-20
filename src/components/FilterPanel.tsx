@@ -1,6 +1,6 @@
-import type { CatalogFacets, FacetValue } from "../../shared/recipe";
-import type { SearchFilters } from "../api";
-import { ChevronIcon, ResetIcon, SlidersIcon } from "../icons";
+import type { CatalogFacets, FacetValue } from '../../shared/recipe';
+import type { SearchFilters } from '../api';
+import { ChevronIcon, ResetIcon, SlidersIcon } from '../icons';
 
 interface FilterPanelProps {
   filters: SearchFilters;
@@ -27,7 +27,10 @@ function FacetSelect({
     <label className="facet-select">
       <span>{label}</span>
       <span className="facet-select__control">
-        <select value={value} onChange={(event) => onChange(event.target.value)}>
+        <select
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+        >
           <option value="">Any</option>
           {options.map((option) => (
             <option key={option.value} value={option.value}>
@@ -53,7 +56,7 @@ function ToggleRune({
   onChange: (checked: boolean) => void;
 }) {
   return (
-    <label className={checked ? "toggle-rune is-active" : "toggle-rune"}>
+    <label className={checked ? 'toggle-rune is-active' : 'toggle-rune'}>
       <input
         type="checkbox"
         checked={checked}
@@ -78,8 +81,16 @@ export function FilterPanel({
   onReset,
 }: FilterPanelProps) {
   return (
-    <section className={open ? "filters is-open" : "filters"} aria-label="Recipe filters">
-      <button className="filters__toggle" type="button" onClick={onToggle} aria-expanded={open}>
+    <section
+      className={open ? 'filters is-open' : 'filters'}
+      aria-label="Recipe filters"
+    >
+      <button
+        className="filters__toggle"
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+      >
         <SlidersIcon />
         <span>Filters</span>
         {activeCount > 0 ? <b>{activeCount}</b> : null}
@@ -168,7 +179,12 @@ export function FilterPanel({
             onChange={(availability) => onChange({ availability })}
           />
         </div>
-        <button type="button" className="filters__reset" onClick={onReset} disabled={activeCount === 0}>
+        <button
+          type="button"
+          className="filters__reset"
+          onClick={onReset}
+          disabled={activeCount === 0}
+        >
           <ResetIcon />
           Reset the ritual
         </button>
