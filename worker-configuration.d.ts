@@ -8,5 +8,5 @@ interface Env {
   RECIPES: R2Bucket;
   SEARCH_RATE_LIMITER: RateLimitBinding;
   DETAIL_RATE_LIMITER: RateLimitBinding;
-  APP_ENV: "development" | "production";
+  APP_ENV: 'development' | 'production';
 }

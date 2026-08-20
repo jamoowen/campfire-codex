@@ -1,12 +1,12 @@
-import { cloudflare } from "@cloudflare/vite-plugin";
-import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { cloudflare } from '@cloudflare/vite-plugin';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [
     react(),
     cloudflare({
-      persistState: { path: ".wrangler/state" },
+      persistState: { path: '.wrangler/state' },
     }),
   ],
   server: {
@@ -18,7 +18,7 @@ export default defineConfig({
     strictPort: true,
   },
   build: {
-    target: "es2022",
+    target: 'es2022',
     sourcemap: true,
   },
 });

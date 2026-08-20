@@ -1,5 +1,10 @@
-import type { RecipeRecord } from "../../shared/recipe";
-import { formatCookedDate, formatDifficulty, formatMinutes, humanize } from "../format";
+import type { RecipeRecord } from '../../shared/recipe';
+import {
+  formatCookedDate,
+  formatDifficulty,
+  formatMinutes,
+  humanize,
+} from '../format';
 import {
   BookmarkIcon,
   ClockIcon,
@@ -8,9 +13,9 @@ import {
   FlameIcon,
   PotIcon,
   StarIcon,
-} from "../icons";
-import type { CookedEntry } from "../storage";
-import { Modal } from "./Modal";
+} from '../icons';
+import type { CookedEntry } from '../storage';
+import { Modal } from './Modal';
 
 interface RecipeDrawerProps {
   open: boolean;
@@ -43,11 +48,23 @@ export function RecipeDrawer({
   onCookAgain,
   onRating,
 }: RecipeDrawerProps) {
-  const externalAvailable = recipe ? !new URL(recipe.sourceUrl).hostname.endsWith(".invalid") : false;
+  const externalAvailable = recipe
+    ? !new URL(recipe.sourceUrl).hostname.endsWith('.invalid')
+    : false;
 
   return (
-    <Modal open={open} onClose={onClose} labelledBy="recipe-drawer-title" className="recipe-drawer">
-      <button className="modal-close" type="button" onClick={onClose} aria-label="Close recipe">
+    <Modal
+      open={open}
+      onClose={onClose}
+      labelledBy="recipe-drawer-title"
+      className="recipe-drawer"
+    >
+      <button
+        className="modal-close"
+        type="button"
+        onClick={onClose}
+        aria-label="Close recipe"
+      >
         <CloseIcon />
       </button>
       {loading ? (
@@ -71,7 +88,8 @@ export function RecipeDrawer({
                 <ClockIcon /> {formatMinutes(recipe.estimatedTotalMinutes)}
               </span>
               <span>
-                <PotIcon /> {recipe.normalizedKeyIngredientCount} key ingredients
+                <PotIcon /> {recipe.normalizedKeyIngredientCount} key
+                ingredients
               </span>
               <span>{formatDifficulty(recipe.difficulty)}</span>
             </div>
@@ -80,28 +98,31 @@ export function RecipeDrawer({
           <div className="drawer-actions">
             <button
               type="button"
-              className={saved ? "primary-action is-active" : "primary-action"}
+              className={saved ? 'primary-action is-active' : 'primary-action'}
               onClick={onToggleSaved}
               aria-pressed={saved}
             >
               <BookmarkIcon filled={saved} />
-              {saved ? "Saved for later" : "Save this recipe"}
+              {saved ? 'Saved for later' : 'Save this recipe'}
             </button>
             <button
               type="button"
-              className={cooked ? "secondary-action is-active" : "secondary-action"}
+              className={
+                cooked ? 'secondary-action is-active' : 'secondary-action'
+              }
               onClick={onToggleCooked}
               aria-pressed={cooked}
             >
               <FlameIcon filled={cooked} />
-              {cooked ? "Cooked" : "I cooked this"}
+              {cooked ? 'Cooked' : 'I cooked this'}
             </button>
           </div>
 
           {cookedEntry ? (
             <div className="cooked-ledger">
               <span>
-                Last conquered <strong>{formatCookedDate(cookedEntry.lastCookedAt)}</strong>
+                Last conquered{' '}
+                <strong>{formatCookedDate(cookedEntry.lastCookedAt)}</strong>
               </span>
               <button type="button" onClick={onCookAgain}>
                 Cooked it again
@@ -112,16 +133,19 @@ export function RecipeDrawer({
           <section className="rating-panel" aria-labelledby="rating-title">
             <div>
               <h3 id="rating-title">Your verdict</h3>
-              <p>Entirely local. No tribunal, no account, no awkward follow-up email.</p>
+              <p>
+                Entirely local. No tribunal, no account, no awkward follow-up
+                email.
+              </p>
             </div>
             <div className="star-picker" aria-label="Recipe rating">
               {[1, 2, 3, 4, 5].map((value) => (
                 <button
                   key={value}
                   type="button"
-                  className={value <= rating ? "is-active" : ""}
+                  className={value <= rating ? 'is-active' : ''}
                   onClick={() => onRating(value === rating ? 0 : value)}
-                  aria-label={`${value} star${value === 1 ? "" : "s"}`}
+                  aria-label={`${value} star${value === 1 ? '' : 's'}`}
                   aria-pressed={value <= rating}
                 >
                   <StarIcon filled={value <= rating} />
@@ -133,8 +157,8 @@ export function RecipeDrawer({
           <section className="drawer-section">
             <h3>Key ingredients</h3>
             <p className="section-note">
-              Search-friendly terms, not a stolen ingredient list. Quantities live with the original
-              author.
+              Search-friendly terms, not a stolen ingredient list. Quantities
+              live with the original author.
             </p>
             <ul className="ingredient-list">
               {recipe.keyIngredients.map((ingredient) => (
@@ -149,22 +173,27 @@ export function RecipeDrawer({
               <dl>
                 <div>
                   <dt>Cuisine</dt>
-                  <dd>{recipe.cuisines.map(humanize).join(", ") || "Unclassified"}</dd>
+                  <dd>
+                    {recipe.cuisines.map(humanize).join(', ') || 'Unclassified'}
+                  </dd>
                 </div>
                 <div>
                   <dt>Protein</dt>
-                  <dd>{recipe.proteins.map(humanize).join(", ") || "Not specified"}</dd>
+                  <dd>
+                    {recipe.proteins.map(humanize).join(', ') ||
+                      'Not specified'}
+                  </dd>
                 </div>
                 <div>
                   <dt>Format</dt>
-                  <dd>{recipe.dishTypes.map(humanize).join(", ")}</dd>
+                  <dd>{recipe.dishTypes.map(humanize).join(', ')}</dd>
                 </div>
                 <div>
                   <dt>Availability</dt>
                   <dd>
-                    {recipe.sainsburysAvailability === "high"
-                      ? "Likely in a large supermarket"
-                      : "A side quest may be required"}
+                    {recipe.sainsburysAvailability === 'high'
+                      ? 'Likely in a large supermarket'
+                      : 'A side quest may be required'}
                   </dd>
                 </div>
               </dl>
@@ -176,20 +205,24 @@ export function RecipeDrawer({
                   <dt>Hands-on time</dt>
                   <dd>
                     {recipe.estimatedHandsOnMinutes == null
-                      ? "Not estimated"
+                      ? 'Not estimated'
                       : formatMinutes(recipe.estimatedHandsOnMinutes)}
                   </dd>
                 </div>
                 <div>
                   <dt>One vessel</dt>
-                  <dd>{recipe.singleVessel ? "Yes. The sink rejoices." : "No. Regrettably."}</dd>
+                  <dd>
+                    {recipe.singleVessel
+                      ? 'Yes. The sink rejoices.'
+                      : 'No. Regrettably.'}
+                  </dd>
                 </div>
                 <div>
                   <dt>Speciality items</dt>
                   <dd>
                     {recipe.specialtyIngredients.length
-                      ? recipe.specialtyIngredients.join(", ")
-                      : "None flagged"}
+                      ? recipe.specialtyIngredients.join(', ')
+                      : 'None flagged'}
                   </dd>
                 </div>
               </dl>
@@ -206,16 +239,22 @@ export function RecipeDrawer({
 
           <footer className="drawer-source">
             <p>
-              Full quantities and instructions stay at the canonical source. Copyright law survives the
-              dungeon.
+              Full quantities and instructions stay at the canonical source.
+              Copyright law survives the dungeon.
             </p>
             {externalAvailable ? (
-              <a href={recipe.sourceUrl} target="_blank" rel="noreferrer noopener">
+              <a
+                href={recipe.sourceUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 View the full recipe at {recipe.sourceSite}
                 <ExternalIcon />
               </a>
             ) : (
-              <span className="demo-source">Demo entry — no external source exists.</span>
+              <span className="demo-source">
+                Demo entry — no external source exists.
+              </span>
             )}
           </footer>
         </>

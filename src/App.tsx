@@ -1,59 +1,70 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import type { MetaResponse, RecipeRecord, RecipeSummary, SearchResponse } from "../shared/recipe";
-import { fetchMeta, fetchRecipe, searchRecipes, type SearchFilters } from "./api";
-import { humanize } from "./format";
-import { useDebouncedValue } from "./hooks";
-import { ArrowIcon, ChevronIcon, FlameIcon, SearchIcon, SlidersIcon } from "./icons";
-import { AboutDialog } from "./components/AboutDialog";
-import { AppHeader, type ViewMode } from "./components/AppHeader";
-import { EmptyState } from "./components/EmptyState";
-import { FilterPanel } from "./components/FilterPanel";
-import { Hero } from "./components/Hero";
-import { RecipeCard } from "./components/RecipeCard";
-import { RecipeDrawer } from "./components/RecipeDrawer";
-import { Toast, type ToastMessage } from "./components/Toast";
-import { useRecipeJournal } from "./storage";
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import type {
+  MetaResponse,
+  RecipeRecord,
+  RecipeSummary,
+  SearchResponse,
+} from '../shared/recipe';
+import {
+  fetchMeta,
+  fetchRecipe,
+  searchRecipes,
+  type SearchFilters,
+} from './api';
+import { useDebouncedValue } from './hooks';
+import { ArrowIcon, ChevronIcon, FlameIcon, SlidersIcon } from './icons';
+import { AboutDialog } from './components/AboutDialog';
+import { AppHeader, type ViewMode } from './components/AppHeader';
+import { EmptyState } from './components/EmptyState';
+import { FilterPanel } from './components/FilterPanel';
+import { Hero } from './components/Hero';
+import { RecipeCard } from './components/RecipeCard';
+import { RecipeDrawer } from './components/RecipeDrawer';
+import { Toast, type ToastMessage } from './components/Toast';
+import { useRecipeJournal } from './storage';
 
 const initialFilters: SearchFilters = {
-  query: "",
-  chef: "",
-  cuisine: "",
-  protein: "",
-  dish: "",
-  dietary: "",
-  difficulty: "",
-  time: "",
-  availability: "",
+  query: '',
+  chef: '',
+  cuisine: '',
+  protein: '',
+  dish: '',
+  dietary: '',
+  difficulty: '',
+  time: '',
+  availability: '',
   quick30: false,
   under10: false,
   singleVessel: false,
   onePotOrPan: false,
   traybake: false,
-  sort: "relevance",
+  sort: 'relevance',
 };
 
 const viewCopy: Record<ViewMode, { title: string; description: string }> = {
   explore: {
-    title: "The recipe index",
-    description: "Browse the hoard. Apply filters before it becomes a personality test.",
+    title: 'The recipe index',
+    description:
+      'Browse the hoard. Apply filters before it becomes a personality test.',
   },
   saved: {
-    title: "Saved provisions",
-    description: "Ideas you optimistically assumed future you would cook.",
+    title: 'Saved provisions',
+    description: 'Ideas you optimistically assumed future you would cook.',
   },
   cooked: {
-    title: "Conquered dishes",
-    description: "A private record of pans survived and dinners successfully claimed.",
+    title: 'Conquered dishes',
+    description:
+      'A private record of pans survived and dinners successfully claimed.',
   },
 };
 
 function initialRecipeFromUrl() {
-  if (typeof window === "undefined") return null;
-  return new URLSearchParams(window.location.search).get("recipe");
+  if (typeof window === 'undefined') return null;
+  return new URLSearchParams(window.location.search).get('recipe');
 }
 
 export default function App() {
-  const [view, setView] = useState<ViewMode>("explore");
+  const [view, setView] = useState<ViewMode>('explore');
   const [filters, setFilters] = useState<SearchFilters>(initialFilters);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [meta, setMeta] = useState<MetaResponse | null>(null);
@@ -64,8 +75,12 @@ export default function App() {
   const [searching, setSearching] = useState(true);
   const [page, setPage] = useState(1);
   const [retryNonce, setRetryNonce] = useState(0);
-  const [selectedId, setSelectedId] = useState<string | null>(() => initialRecipeFromUrl());
-  const [selectedRecipe, setSelectedRecipe] = useState<RecipeRecord | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(() =>
+    initialRecipeFromUrl(),
+  );
+  const [selectedRecipe, setSelectedRecipe] = useState<RecipeRecord | null>(
+    null,
+  );
   const [detailError, setDetailError] = useState<string | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -77,14 +92,14 @@ export default function App() {
     () => ({
       ...filters,
       query: debouncedQuery,
-      sort: view === "explore" ? filters.sort : "collection",
+      sort: view === 'explore' ? filters.sort : 'collection',
     }),
     [debouncedQuery, filters, view],
   );
 
   const collectionIds = useMemo(() => {
-    if (view === "saved") return journal.savedIds;
-    if (view === "cooked") return journal.cookedIds;
+    if (view === 'saved') return journal.savedIds;
+    if (view === 'cooked') return journal.cookedIds;
     return [];
   }, [journal.cookedIds, journal.savedIds, view]);
 
@@ -127,7 +142,11 @@ export default function App() {
       .then(setMeta)
       .catch((error: unknown) => {
         if (controller.signal.aborted) return;
-        setMetaError(error instanceof Error ? error.message : "The catalogue metadata refused to appear.");
+        setMetaError(
+          error instanceof Error
+            ? error.message
+            : 'The catalogue metadata refused to appear.',
+        );
       });
     return () => controller.abort();
   }, []);
@@ -137,7 +156,7 @@ export default function App() {
   }, [searchCriteriaKey]);
 
   useEffect(() => {
-    if (view !== "explore" && collectionIds.length === 0) {
+    if (view !== 'explore' && collectionIds.length === 0) {
       setItems([]);
       setResults({
         items: [],
@@ -145,8 +164,8 @@ export default function App() {
         page: 1,
         pageSize: 24,
         totalPages: 1,
-        source: meta?.source ?? "demo",
-        quip: "Nothing here yet. The ledger remains smugly blank.",
+        source: meta?.source ?? 'demo',
+        quip: 'Nothing here yet. The ledger remains smugly blank.',
       });
       setSearching(false);
       setSearchError(null);
@@ -163,7 +182,11 @@ export default function App() {
       })
       .catch((error: unknown) => {
         if (controller.signal.aborted) return;
-        setSearchError(error instanceof Error ? error.message : "The pantry search failed dramatically.");
+        setSearchError(
+          error instanceof Error
+            ? error.message
+            : 'The pantry search failed dramatically.',
+        );
         setItems([]);
       })
       .finally(() => {
@@ -185,7 +208,11 @@ export default function App() {
       .then(setSelectedRecipe)
       .catch((error: unknown) => {
         if (controller.signal.aborted) return;
-        setDetailError(error instanceof Error ? error.message : "The recipe scroll is unreadable.");
+        setDetailError(
+          error instanceof Error
+            ? error.message
+            : 'The recipe scroll is unreadable.',
+        );
       })
       .finally(() => {
         if (!controller.signal.aborted) setDetailLoading(false);
@@ -201,32 +228,34 @@ export default function App() {
         target instanceof HTMLTextAreaElement ||
         target instanceof HTMLSelectElement ||
         (target instanceof HTMLElement && target.isContentEditable);
-      if (event.key === "/" && !typing && !selectedId && !aboutOpen) {
+      if (event.key === '/' && !typing && !selectedId && !aboutOpen) {
         event.preventDefault();
-        document.querySelector<HTMLInputElement>("[data-recipe-search]")?.focus();
+        document
+          .querySelector<HTMLInputElement>('[data-recipe-search]')
+          ?.focus();
       }
     };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, [aboutOpen, selectedId]);
 
   useEffect(() => {
     const onPopState = () => setSelectedId(initialRecipeFromUrl());
-    window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
   const openRecipe = useCallback((id: string) => {
     const url = new URL(window.location.href);
-    url.searchParams.set("recipe", id);
-    window.history.pushState({}, "", url);
+    url.searchParams.set('recipe', id);
+    window.history.pushState({}, '', url);
     setSelectedId(id);
   }, []);
 
   const closeRecipe = useCallback(() => {
     const url = new URL(window.location.href);
-    url.searchParams.delete("recipe");
-    window.history.pushState({}, "", url);
+    url.searchParams.delete('recipe');
+    window.history.pushState({}, '', url);
     setSelectedId(null);
   }, []);
 
@@ -236,13 +265,17 @@ export default function App() {
 
   const resetFilters = useCallback(() => {
     setFilters(initialFilters);
-    announce("The ritual has been reset. The pantry denies everything.");
+    announce('The ritual has been reset. The pantry denies everything.');
   }, [announce]);
 
   const toggleSaved = useCallback(
     (id: string) => {
       const savedNow = journal.toggleSaved(id);
-      announce(savedNow ? "Stashed. Future you now has obligations." : "Unstashed. Commitment successfully avoided.");
+      announce(
+        savedNow
+          ? 'Stashed. Future you now has obligations.'
+          : 'Unstashed. Commitment successfully avoided.',
+      );
     },
     [announce, journal],
   );
@@ -250,7 +283,11 @@ export default function App() {
   const toggleCooked = useCallback(
     (id: string) => {
       const cookedNow = journal.toggleCooked(id);
-      announce(cookedNow ? "Conquered. The pan may never recover." : "Victory redacted. History is flexible.");
+      announce(
+        cookedNow
+          ? 'Conquered. The pan may never recover.'
+          : 'Victory redacted. History is flexible.',
+      );
     },
     [announce, journal],
   );
@@ -258,12 +295,18 @@ export default function App() {
   const setRating = useCallback(
     (id: string, rating: number) => {
       journal.setRating(id, rating);
-      announce(rating ? `Judgement rendered: ${rating}/5. Mercifully final.` : "Verdict withdrawn. The court is confused.");
+      announce(
+        rating
+          ? `Judgement rendered: ${rating}/5. Mercifully final.`
+          : 'Verdict withdrawn. The court is confused.',
+      );
     },
     [announce, journal],
   );
 
-  const selectedCookedEntry = selectedId ? journal.cookedEntry(selectedId) : null;
+  const selectedCookedEntry = selectedId
+    ? journal.cookedEntry(selectedId)
+    : null;
   const filtered = activeFilterCount > 0 || Boolean(filters.query.trim());
   const copy = viewCopy[view];
 
@@ -274,7 +317,11 @@ export default function App() {
           view={view}
           onViewChange={(next) => {
             setView(next);
-            window.requestAnimationFrame(() => document.getElementById("recipes")?.scrollIntoView({ behavior: "smooth" }));
+            window.requestAnimationFrame(() =>
+              document
+                .getElementById('recipes')
+                ?.scrollIntoView({ behavior: 'smooth' }),
+            );
           }}
           onAbout={() => setAboutOpen(true)}
           savedCount={journal.savedIds.length}
@@ -308,20 +355,32 @@ export default function App() {
         <section className="results" aria-labelledby="results-title">
           <header className="results__header">
             <div>
-              <p>{view === "explore" ? "Browse the hoard" : view === "saved" ? "Your provisions" : "The victory ledger"}</p>
+              <p>
+                {view === 'explore'
+                  ? 'Browse the hoard'
+                  : view === 'saved'
+                    ? 'Your provisions'
+                    : 'The victory ledger'}
+              </p>
               <h2 id="results-title">{copy.title}</h2>
               <span>{copy.description}</span>
             </div>
             <div className="results__tools">
               <span className="result-count">
-                {searching ? "Consulting scrolls…" : `${results?.total ?? 0} ${results?.total === 1 ? "recipe" : "recipes"}`}
+                {searching
+                  ? 'Consulting scrolls…'
+                  : `${results?.total ?? 0} ${results?.total === 1 ? 'recipe' : 'recipes'}`}
               </span>
-              {view === "explore" ? (
+              {view === 'explore' ? (
                 <label className="sort-control">
                   <span>Sort</span>
                   <select
                     value={filters.sort}
-                    onChange={(event) => patchFilters({ sort: event.target.value as SearchFilters["sort"] })}
+                    onChange={(event) =>
+                      patchFilters({
+                        sort: event.target.value as SearchFilters['sort'],
+                      })
+                    }
                   >
                     <option value="relevance">Best match</option>
                     <option value="fastest">Fastest first</option>
@@ -335,15 +394,22 @@ export default function App() {
             </div>
           </header>
 
-          {metaError ? <p className="inline-warning">Catalogue metadata: {metaError}</p> : null}
-          {results?.quip && !searching ? <p className="results__quip">{results.quip}</p> : null}
+          {metaError ? (
+            <p className="inline-warning">Catalogue metadata: {metaError}</p>
+          ) : null}
+          {results?.quip && !searching ? (
+            <p className="results__quip">{results.quip}</p>
+          ) : null}
 
           {searchError ? (
             <div className="search-failure">
               <SlidersIcon />
               <h3>The pantry door is jammed.</h3>
               <p>{searchError}</p>
-              <button type="button" onClick={() => setRetryNonce((current) => current + 1)}>
+              <button
+                type="button"
+                onClick={() => setRetryNonce((current) => current + 1)}
+              >
                 Try again
               </button>
             </div>
@@ -375,7 +441,11 @@ export default function App() {
 
           {results && results.totalPages > 1 ? (
             <nav className="pagination" aria-label="Recipe pages">
-              <button type="button" onClick={() => setPage((current) => Math.max(1, current - 1))} disabled={page <= 1}>
+              <button
+                type="button"
+                onClick={() => setPage((current) => Math.max(1, current - 1))}
+                disabled={page <= 1}
+              >
                 <ArrowIcon direction="left" />
                 Previous
               </button>
@@ -384,7 +454,11 @@ export default function App() {
               </span>
               <button
                 type="button"
-                onClick={() => setPage((current) => Math.min(results.totalPages, current + 1))}
+                onClick={() =>
+                  setPage((current) =>
+                    Math.min(results.totalPages, current + 1),
+                  )
+                }
                 disabled={page >= results.totalPages}
               >
                 Next
@@ -420,7 +494,9 @@ export default function App() {
         onCookAgain={() => {
           if (!selectedId) return;
           journal.recordAnotherCook(selectedId);
-          announce("Another victory entered into the ledger. Modesty remains optional.");
+          announce(
+            'Another victory entered into the ledger. Modesty remains optional.',
+          );
         }}
         onRating={(rating) => selectedId && setRating(selectedId, rating)}
       />

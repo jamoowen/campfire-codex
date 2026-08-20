@@ -23,7 +23,13 @@ jobs:
           package-manager-cache: false
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+      - name: Check formatting
+        run: pnpm format:check
       - run: pnpm check
+      - name: Audit dependencies
+        run: pnpm audit
       - run: pnpm build
       - run: pnpm exec wrangler deploy --dry-run
 

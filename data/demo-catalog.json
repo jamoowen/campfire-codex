@@ -228,20 +228,10 @@
       "id": "demo-ember-orzo",
       "name": "Ember-Pot Tomato Orzo",
       "chef": "Rowan Fieldguide",
-      "cuisines": [
-        "Mediterranean-inspired"
-      ],
-      "proteins": [
-        "vegetarian"
-      ],
-      "dishTypes": [
-        "main",
-        "pasta",
-        "one_pot"
-      ],
-      "dietary": [
-        "vegetarian"
-      ],
+      "cuisines": ["Mediterranean-inspired"],
+      "proteins": ["vegetarian"],
+      "dishTypes": ["main", "pasta", "one_pot"],
+      "dietary": ["vegetarian"],
       "difficulty": "easy",
       "estimatedTotalMinutes": 25,
       "estimatedHandsOnMinutes": 15,
@@ -288,19 +278,10 @@
       "id": "demo-garlic-noodles",
       "name": "Goblin-Proof Garlic Noodles",
       "chef": "Mira Ashspoon",
-      "cuisines": [
-        "Asian-inspired"
-      ],
-      "proteins": [
-        "vegetarian"
-      ],
-      "dishTypes": [
-        "main",
-        "noodles"
-      ],
-      "dietary": [
-        "vegetarian"
-      ],
+      "cuisines": ["Asian-inspired"],
+      "proteins": ["vegetarian"],
+      "dishTypes": ["main", "noodles"],
+      "dietary": ["vegetarian"],
       "difficulty": "easy",
       "estimatedTotalMinutes": 15,
       "estimatedHandsOnMinutes": 15,
@@ -346,19 +327,10 @@
       "id": "demo-harissa-chickpeas",
       "name": "Dragonless Harissa Chickpeas",
       "chef": "Bramble Kettle",
-      "cuisines": [
-        "Middle Eastern-inspired"
-      ],
-      "proteins": [
-        "legumes"
-      ],
-      "dishTypes": [
-        "main",
-        "one_pan"
-      ],
-      "dietary": [
-        "vegan"
-      ],
+      "cuisines": ["Middle Eastern-inspired"],
+      "proteins": ["legumes"],
+      "dishTypes": ["main", "one_pan"],
+      "dietary": ["vegan"],
       "difficulty": "easy",
       "estimatedTotalMinutes": 30,
       "estimatedHandsOnMinutes": 20,
@@ -405,19 +377,10 @@
       "id": "demo-mushroom-toast",
       "name": "Mossy Mushroom Toast",
       "chef": "Tilda Panwarden",
-      "cuisines": [
-        "British"
-      ],
-      "proteins": [
-        "vegetarian"
-      ],
-      "dishTypes": [
-        "main",
-        "toast"
-      ],
-      "dietary": [
-        "vegetarian"
-      ],
+      "cuisines": ["British"],
+      "proteins": ["vegetarian"],
+      "dishTypes": ["main", "toast"],
+      "dietary": ["vegetarian"],
       "difficulty": "easy",
       "estimatedTotalMinutes": 20,
       "estimatedHandsOnMinutes": 20,
@@ -448,34 +411,17 @@
       "specialtyIngredients": [],
       "onePotOrPan": true,
       "singleVessel": true,
-      "tags": [
-        "british",
-        "easy",
-        "main",
-        "quick_16_30",
-        "toast",
-        "vegetarian"
-      ],
+      "tags": ["british", "easy", "main", "quick_16_30", "toast", "vegetarian"],
       "selectionBatch": "demo"
     },
     {
       "id": "demo-lentil-curry",
       "name": "Lantern Lentil Curry",
       "chef": "Mira Ashspoon",
-      "cuisines": [
-        "Indian-inspired"
-      ],
-      "proteins": [
-        "legumes"
-      ],
-      "dishTypes": [
-        "main",
-        "curry",
-        "one_pot"
-      ],
-      "dietary": [
-        "vegan"
-      ],
+      "cuisines": ["Indian-inspired"],
+      "proteins": ["legumes"],
+      "dishTypes": ["main", "curry", "one_pot"],
+      "dietary": ["vegan"],
       "difficulty": "easy",
       "estimatedTotalMinutes": 40,
       "estimatedHandsOnMinutes": 20,
@@ -523,16 +469,9 @@
       "id": "demo-knight-traybake",
       "name": "Knight's Night-Off Traybake",
       "chef": "Rowan Fieldguide",
-      "cuisines": [
-        "British"
-      ],
-      "proteins": [
-        "chicken"
-      ],
-      "dishTypes": [
-        "main",
-        "traybake"
-      ],
+      "cuisines": ["British"],
+      "proteins": ["chicken"],
+      "dishTypes": ["main", "traybake"],
       "dietary": [],
       "difficulty": "easy",
       "estimatedTotalMinutes": 50,
@@ -579,19 +518,10 @@
       "id": "demo-green-pasta",
       "name": "Elf's Suspiciously Green Pasta",
       "chef": "Tilda Panwarden",
-      "cuisines": [
-        "Italian-inspired"
-      ],
-      "proteins": [
-        "vegetarian"
-      ],
-      "dishTypes": [
-        "main",
-        "pasta"
-      ],
-      "dietary": [
-        "vegetarian"
-      ],
+      "cuisines": ["Italian-inspired"],
+      "proteins": ["vegetarian"],
+      "dishTypes": ["main", "pasta"],
+      "dietary": ["vegetarian"],
       "difficulty": "easy",
       "estimatedTotalMinutes": 25,
       "estimatedHandsOnMinutes": 20,
@@ -637,20 +567,10 @@
       "id": "demo-onion-soup",
       "name": "Dwarf's Three-Onion Soup",
       "chef": "Bramble Kettle",
-      "cuisines": [
-        "French-inspired"
-      ],
-      "proteins": [
-        "vegetarian"
-      ],
-      "dishTypes": [
-        "main",
-        "soup",
-        "one_pot"
-      ],
-      "dietary": [
-        "vegetarian"
-      ],
+      "cuisines": ["French-inspired"],
+      "proteins": ["vegetarian"],
+      "dishTypes": ["main", "soup", "one_pot"],
+      "dietary": ["vegetarian"],
       "difficulty": "easy_moderate",
       "estimatedTotalMinutes": 65,
       "estimatedHandsOnMinutes": 30,
@@ -698,19 +618,10 @@
       "id": "demo-campfire-salmon",
       "name": "Campfire Salmon with Charred Lemon",
       "chef": "Nell Copperladle",
-      "cuisines": [
-        "Mediterranean-inspired"
-      ],
-      "proteins": [
-        "salmon"
-      ],
-      "dishTypes": [
-        "main",
-        "one_pan"
-      ],
-      "dietary": [
-        "pescatarian"
-      ],
+      "cuisines": ["Mediterranean-inspired"],
+      "proteins": ["salmon"],
+      "dishTypes": ["main", "one_pan"],
+      "dietary": ["pescatarian"],
       "difficulty": "easy",
       "estimatedTotalMinutes": 25,
       "estimatedHandsOnMinutes": 20,
@@ -756,19 +667,10 @@
       "id": "demo-rice-bowl",
       "name": "Rat-Free Sesame Rice Bowl",
       "chef": "Nell Copperladle",
-      "cuisines": [
-        "Japanese-inspired"
-      ],
-      "proteins": [
-        "eggs"
-      ],
-      "dishTypes": [
-        "main",
-        "rice"
-      ],
-      "dietary": [
-        "vegetarian"
-      ],
+      "cuisines": ["Japanese-inspired"],
+      "proteins": ["eggs"],
+      "dishTypes": ["main", "rice"],
+      "dietary": ["vegetarian"],
       "difficulty": "easy",
       "estimatedTotalMinutes": 20,
       "estimatedHandsOnMinutes": 20,
@@ -815,20 +717,10 @@
       "id": "demo-pea-soup",
       "name": "Potion-Seller's Pea Soup",
       "chef": "Tilda Panwarden",
-      "cuisines": [
-        "British"
-      ],
-      "proteins": [
-        "legumes"
-      ],
-      "dishTypes": [
-        "main",
-        "soup",
-        "one_pot"
-      ],
-      "dietary": [
-        "vegetarian"
-      ],
+      "cuisines": ["British"],
+      "proteins": ["legumes"],
+      "dishTypes": ["main", "soup", "one_pot"],
+      "dietary": ["vegetarian"],
       "difficulty": "easy",
       "estimatedTotalMinutes": 15,
       "estimatedHandsOnMinutes": 15,
@@ -875,20 +767,10 @@
       "id": "demo-shakshuka",
       "name": "Last-Ration Shakshuka",
       "chef": "Mira Ashspoon",
-      "cuisines": [
-        "Middle Eastern-inspired"
-      ],
-      "proteins": [
-        "eggs"
-      ],
-      "dishTypes": [
-        "main",
-        "brunch",
-        "one_pan"
-      ],
-      "dietary": [
-        "vegetarian"
-      ],
+      "cuisines": ["Middle Eastern-inspired"],
+      "proteins": ["eggs"],
+      "dishTypes": ["main", "brunch", "one_pan"],
+      "dietary": ["vegetarian"],
       "difficulty": "easy",
       "estimatedTotalMinutes": 30,
       "estimatedHandsOnMinutes": 20,

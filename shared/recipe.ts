@@ -1,10 +1,10 @@
-export type Difficulty = "easy" | "easy_moderate" | "moderate";
+export type Difficulty = 'easy' | 'easy_moderate' | 'moderate';
 export type TimeCategory =
-  | "very_quick_under_15"
-  | "quick_16_30"
-  | "weeknight_31_60"
-  | "longer_or_passive";
-export type Availability = "high" | "medium";
+  | 'very_quick_under_15'
+  | 'quick_16_30'
+  | 'weeknight_31_60'
+  | 'longer_or_passive';
+export type Availability = 'high' | 'medium';
 
 export interface RecipeRecord {
   id: string;
@@ -44,26 +44,26 @@ export interface RecipeRecord {
 
 export type RecipeSummary = Pick<
   RecipeRecord,
-  | "id"
-  | "name"
-  | "chef"
-  | "sourceSite"
-  | "cuisines"
-  | "proteins"
-  | "dishTypes"
-  | "dietary"
-  | "difficulty"
-  | "estimatedTotalMinutes"
-  | "estimatedHandsOnMinutes"
-  | "timeCategory"
-  | "keyIngredients"
-  | "normalizedKeyIngredientCount"
-  | "under10KeyIngredients"
-  | "sainsburysAvailability"
-  | "onePot"
-  | "onePan"
-  | "traybake"
-  | "singleVessel"
+  | 'id'
+  | 'name'
+  | 'chef'
+  | 'sourceSite'
+  | 'cuisines'
+  | 'proteins'
+  | 'dishTypes'
+  | 'dietary'
+  | 'difficulty'
+  | 'estimatedTotalMinutes'
+  | 'estimatedHandsOnMinutes'
+  | 'timeCategory'
+  | 'keyIngredients'
+  | 'normalizedKeyIngredientCount'
+  | 'under10KeyIngredients'
+  | 'sainsburysAvailability'
+  | 'onePot'
+  | 'onePan'
+  | 'traybake'
+  | 'singleVessel'
 >;
 
 export interface FacetValue {
@@ -104,7 +104,7 @@ export interface CatalogPayload {
 export interface MetaResponse {
   dataset: CatalogDataset;
   facets: CatalogFacets;
-  source: "r2" | "demo";
+  source: 'r2' | 'demo';
 }
 
 export interface SearchResponse {
@@ -113,7 +113,7 @@ export interface SearchResponse {
   page: number;
   pageSize: number;
   totalPages: number;
-  source: "r2" | "demo";
+  source: 'r2' | 'demo';
   quip: string;
 }
 

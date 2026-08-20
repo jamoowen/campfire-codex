@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-const STORAGE_KEY = "campfire-codex:journal:v1";
+const STORAGE_KEY = 'campfire-codex:journal:v1';
 const MAX_COLLECTION_SIZE = 100;
 const MAX_COOKED_TIMES = 99;
 const ROUTE_SAFE_ID = /^[A-Za-z0-9._-]{1,100}$/;
@@ -25,30 +25,52 @@ const emptyJournal: RecipeJournal = {
 };
 
 function sanitizeJournal(value: unknown): RecipeJournal {
-  if (!value || typeof value !== "object") return emptyJournal;
+  if (!value || typeof value !== 'object') return emptyJournal;
   const candidate = value as Partial<RecipeJournal>;
   const saved = Array.isArray(candidate.saved)
-    ? [...new Set(candidate.saved.filter((id): id is string => typeof id === "string" && ROUTE_SAFE_ID.test(id)))].slice(0, MAX_COLLECTION_SIZE)
+    ? [
+        ...new Set(
+          candidate.saved.filter(
+            (id): id is string =>
+              typeof id === 'string' && ROUTE_SAFE_ID.test(id),
+          ),
+        ),
+      ].slice(0, MAX_COLLECTION_SIZE)
     : [];
 
   const cooked: Record<string, CookedEntry> = {};
-  if (candidate.cooked && typeof candidate.cooked === "object") {
-    for (const [id, raw] of Object.entries(candidate.cooked).slice(0, MAX_COLLECTION_SIZE)) {
-      if (!raw || typeof raw !== "object") continue;
+  if (candidate.cooked && typeof candidate.cooked === 'object') {
+    for (const [id, raw] of Object.entries(candidate.cooked).slice(
+      0,
+      MAX_COLLECTION_SIZE,
+    )) {
+      if (!raw || typeof raw !== 'object') continue;
       const entry = raw as Partial<CookedEntry>;
-      if (!ROUTE_SAFE_ID.test(id) || typeof entry.lastCookedAt !== "string" || !Number.isFinite(Date.parse(entry.lastCookedAt))) continue;
+      if (
+        !ROUTE_SAFE_ID.test(id) ||
+        typeof entry.lastCookedAt !== 'string' ||
+        !Number.isFinite(Date.parse(entry.lastCookedAt))
+      )
+        continue;
       cooked[id] = {
         lastCookedAt: entry.lastCookedAt,
-        times: Math.min(MAX_COOKED_TIMES, Math.max(1, Math.round(Number(entry.times) || 1))),
+        times: Math.min(
+          MAX_COOKED_TIMES,
+          Math.max(1, Math.round(Number(entry.times) || 1)),
+        ),
       };
     }
   }
 
   const ratings: Record<string, number> = {};
-  if (candidate.ratings && typeof candidate.ratings === "object") {
-    for (const [id, raw] of Object.entries(candidate.ratings).slice(0, MAX_COLLECTION_SIZE)) {
+  if (candidate.ratings && typeof candidate.ratings === 'object') {
+    for (const [id, raw] of Object.entries(candidate.ratings).slice(
+      0,
+      MAX_COLLECTION_SIZE,
+    )) {
       const rating = Math.round(Number(raw));
-      if (ROUTE_SAFE_ID.test(id) && rating >= 1 && rating <= 5) ratings[id] = rating;
+      if (ROUTE_SAFE_ID.test(id) && rating >= 1 && rating <= 5)
+        ratings[id] = rating;
     }
   }
 
@@ -56,7 +78,7 @@ function sanitizeJournal(value: unknown): RecipeJournal {
 }
 
 function readJournal() {
-  if (typeof window === "undefined") return emptyJournal;
+  if (typeof window === 'undefined') return emptyJournal;
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     return raw ? sanitizeJournal(JSON.parse(raw)) : emptyJournal;
@@ -96,16 +118,19 @@ export function useRecipeJournal() {
         setJournal(emptyJournal);
       }
     };
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
   }, []);
 
-  const update = useCallback((mutator: (current: RecipeJournal) => RecipeJournal) => {
-    const next = mutator(journalRef.current);
-    journalRef.current = next;
-    persistJournal(next);
-    setJournal(next);
-  }, []);
+  const update = useCallback(
+    (mutator: (current: RecipeJournal) => RecipeJournal) => {
+      const next = mutator(journalRef.current);
+      journalRef.current = next;
+      persistJournal(next);
+      setJournal(next);
+    },
+    [],
+  );
 
   const toggleSaved = useCallback(
     (id: string) => {
@@ -118,10 +143,10 @@ export function useRecipeJournal() {
           ...current,
           saved: exists
             ? current.saved.filter((candidate) => candidate !== id)
-            : [id, ...current.saved.filter((candidate) => candidate !== id)].slice(
-                0,
-                MAX_COLLECTION_SIZE,
-              ),
+            : [
+                id,
+                ...current.saved.filter((candidate) => candidate !== id),
+              ].slice(0, MAX_COLLECTION_SIZE),
         };
       });
       return savedNow;
@@ -156,7 +181,11 @@ export function useRecipeJournal() {
       if (!ROUTE_SAFE_ID.test(id)) return;
       update((current) => {
         const existing = current.cooked[id];
-        if (!existing && Object.keys(current.cooked).length >= MAX_COLLECTION_SIZE) return current;
+        if (
+          !existing &&
+          Object.keys(current.cooked).length >= MAX_COLLECTION_SIZE
+        )
+          return current;
         return {
           ...current,
           cooked: {
@@ -178,7 +207,11 @@ export function useRecipeJournal() {
       update((current) => {
         const ratings = { ...current.ratings };
         if (rating < 1 || rating > 5) delete ratings[id];
-        else if (id in ratings || Object.keys(ratings).length < MAX_COLLECTION_SIZE) ratings[id] = Math.round(rating);
+        else if (
+          id in ratings ||
+          Object.keys(ratings).length < MAX_COLLECTION_SIZE
+        )
+          ratings[id] = Math.round(rating);
         return { ...current, ratings };
       });
     },
@@ -190,7 +223,8 @@ export function useRecipeJournal() {
       Object.entries(journal.cooked)
         .sort(
           ([, left], [, right]) =>
-            new Date(right.lastCookedAt).getTime() - new Date(left.lastCookedAt).getTime(),
+            new Date(right.lastCookedAt).getTime() -
+            new Date(left.lastCookedAt).getTime(),
         )
         .map(([id]) => id),
     [journal.cooked],
