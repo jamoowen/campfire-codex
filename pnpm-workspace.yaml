@@ -1,0 +1,18 @@
+packages:
+  - .
+
+# pnpm 11 project settings live here rather than in .npmrc.
+engineStrict: true
+saveExact: true
+strictPeerDependencies: true
+autoInstallPeers: false
+
+# Keep dependency lifecycle scripts deny-by-default. These two packages ship
+# trusted runtime binaries required by Vite/Wrangler.
+allowBuilds:
+  esbuild: true
+  workerd: true
+
+minimumReleaseAgeExclude:
+  - '@vitejs/plugin-react@6.1.0'
+  - vite@8.2.2

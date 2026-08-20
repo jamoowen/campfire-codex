@@ -1,0 +1,936 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-20T19:31:21.850086Z",
+  "dataset": {
+    "title": "Campfire Codex demo catalogue",
+    "recipeCount": 12,
+    "authorCount": 5,
+    "sourceSiteCount": 1,
+    "generatedAt": "2026-08-20T19:31:21.850086Z",
+    "isDemo": true,
+    "note": "Fictional demo entries. Seed local R2 or upload the private catalogue to use the supplied recipe data."
+  },
+  "facets": {
+    "chefs": [
+      {
+        "value": "Mira Ashspoon",
+        "label": "Mira Ashspoon",
+        "count": 3
+      },
+      {
+        "value": "Tilda Panwarden",
+        "label": "Tilda Panwarden",
+        "count": 3
+      },
+      {
+        "value": "Bramble Kettle",
+        "label": "Bramble Kettle",
+        "count": 2
+      },
+      {
+        "value": "Nell Copperladle",
+        "label": "Nell Copperladle",
+        "count": 2
+      },
+      {
+        "value": "Rowan Fieldguide",
+        "label": "Rowan Fieldguide",
+        "count": 2
+      }
+    ],
+    "cuisines": [
+      {
+        "value": "British",
+        "label": "British",
+        "count": 3
+      },
+      {
+        "value": "Mediterranean-inspired",
+        "label": "Mediterranean Inspired",
+        "count": 2
+      },
+      {
+        "value": "Middle Eastern-inspired",
+        "label": "Middle Eastern Inspired",
+        "count": 2
+      },
+      {
+        "value": "Asian-inspired",
+        "label": "Asian Inspired",
+        "count": 1
+      },
+      {
+        "value": "French-inspired",
+        "label": "French Inspired",
+        "count": 1
+      },
+      {
+        "value": "Indian-inspired",
+        "label": "Indian Inspired",
+        "count": 1
+      },
+      {
+        "value": "Italian-inspired",
+        "label": "Italian Inspired",
+        "count": 1
+      },
+      {
+        "value": "Japanese-inspired",
+        "label": "Japanese Inspired",
+        "count": 1
+      }
+    ],
+    "proteins": [
+      {
+        "value": "vegetarian",
+        "label": "Vegetarian",
+        "count": 5
+      },
+      {
+        "value": "legumes",
+        "label": "Legumes",
+        "count": 3
+      },
+      {
+        "value": "eggs",
+        "label": "Eggs",
+        "count": 2
+      },
+      {
+        "value": "chicken",
+        "label": "Chicken",
+        "count": 1
+      },
+      {
+        "value": "salmon",
+        "label": "Salmon",
+        "count": 1
+      }
+    ],
+    "dishTypes": [
+      {
+        "value": "main",
+        "label": "Main",
+        "count": 12
+      },
+      {
+        "value": "one_pot",
+        "label": "One Pot",
+        "count": 4
+      },
+      {
+        "value": "one_pan",
+        "label": "One Pan",
+        "count": 3
+      },
+      {
+        "value": "pasta",
+        "label": "Pasta",
+        "count": 2
+      },
+      {
+        "value": "soup",
+        "label": "Soup",
+        "count": 2
+      },
+      {
+        "value": "brunch",
+        "label": "Brunch",
+        "count": 1
+      },
+      {
+        "value": "curry",
+        "label": "Curry",
+        "count": 1
+      },
+      {
+        "value": "noodles",
+        "label": "Noodles",
+        "count": 1
+      },
+      {
+        "value": "rice",
+        "label": "Rice",
+        "count": 1
+      },
+      {
+        "value": "toast",
+        "label": "Toast",
+        "count": 1
+      },
+      {
+        "value": "traybake",
+        "label": "Traybake",
+        "count": 1
+      }
+    ],
+    "dietary": [
+      {
+        "value": "vegetarian",
+        "label": "Vegetarian",
+        "count": 8
+      },
+      {
+        "value": "vegan",
+        "label": "Vegan",
+        "count": 2
+      },
+      {
+        "value": "pescatarian",
+        "label": "Pescatarian",
+        "count": 1
+      }
+    ],
+    "difficulties": [
+      {
+        "value": "easy",
+        "label": "Easy",
+        "count": 11
+      },
+      {
+        "value": "easy_moderate",
+        "label": "Easy Moderate",
+        "count": 1
+      }
+    ],
+    "timeCategories": [
+      {
+        "value": "quick_16_30",
+        "label": "Quick 16 30",
+        "count": 7
+      },
+      {
+        "value": "very_quick_under_15",
+        "label": "Very Quick Under 15",
+        "count": 2
+      },
+      {
+        "value": "weeknight_31_60",
+        "label": "Weeknight 31 60",
+        "count": 2
+      },
+      {
+        "value": "longer_or_passive",
+        "label": "Longer Or Passive",
+        "count": 1
+      }
+    ],
+    "availability": [
+      {
+        "value": "high",
+        "label": "High",
+        "count": 12
+      }
+    ]
+  },
+  "recipes": [
+    {
+      "id": "demo-ember-orzo",
+      "name": "Ember-Pot Tomato Orzo",
+      "chef": "Rowan Fieldguide",
+      "cuisines": [
+        "Mediterranean-inspired"
+      ],
+      "proteins": [
+        "vegetarian"
+      ],
+      "dishTypes": [
+        "main",
+        "pasta",
+        "one_pot"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 25,
+      "estimatedHandsOnMinutes": 15,
+      "timeCategory": "quick_16_30",
+      "keyIngredients": [
+        "orzo",
+        "tinned tomatoes",
+        "garlic",
+        "spinach",
+        "feta",
+        "olive oil"
+      ],
+      "onePot": true,
+      "onePan": false,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-ember-orzo",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 6,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": true,
+      "singleVessel": true,
+      "tags": [
+        "easy",
+        "main",
+        "mediterranean_inspired",
+        "one_pot",
+        "pasta",
+        "quick_16_30",
+        "vegetarian"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-garlic-noodles",
+      "name": "Goblin-Proof Garlic Noodles",
+      "chef": "Mira Ashspoon",
+      "cuisines": [
+        "Asian-inspired"
+      ],
+      "proteins": [
+        "vegetarian"
+      ],
+      "dishTypes": [
+        "main",
+        "noodles"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 15,
+      "estimatedHandsOnMinutes": 15,
+      "timeCategory": "very_quick_under_15",
+      "keyIngredients": [
+        "noodles",
+        "garlic",
+        "soy sauce",
+        "butter",
+        "spring onions",
+        "sesame"
+      ],
+      "onePot": false,
+      "onePan": false,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-garlic-noodles",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 6,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": false,
+      "singleVessel": false,
+      "tags": [
+        "asian_inspired",
+        "easy",
+        "main",
+        "noodles",
+        "vegetarian",
+        "very_quick_under_15"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-harissa-chickpeas",
+      "name": "Dragonless Harissa Chickpeas",
+      "chef": "Bramble Kettle",
+      "cuisines": [
+        "Middle Eastern-inspired"
+      ],
+      "proteins": [
+        "legumes"
+      ],
+      "dishTypes": [
+        "main",
+        "one_pan"
+      ],
+      "dietary": [
+        "vegan"
+      ],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 30,
+      "estimatedHandsOnMinutes": 20,
+      "timeCategory": "quick_16_30",
+      "keyIngredients": [
+        "chickpeas",
+        "harissa",
+        "tomatoes",
+        "lemon",
+        "red onion",
+        "parsley"
+      ],
+      "onePot": false,
+      "onePan": true,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-harissa-chickpeas",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 6,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": true,
+      "singleVessel": true,
+      "tags": [
+        "easy",
+        "legumes",
+        "main",
+        "middle_eastern_inspired",
+        "one_pan",
+        "quick_16_30",
+        "vegan"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-mushroom-toast",
+      "name": "Mossy Mushroom Toast",
+      "chef": "Tilda Panwarden",
+      "cuisines": [
+        "British"
+      ],
+      "proteins": [
+        "vegetarian"
+      ],
+      "dishTypes": [
+        "main",
+        "toast"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 20,
+      "estimatedHandsOnMinutes": 20,
+      "timeCategory": "quick_16_30",
+      "keyIngredients": [
+        "mushrooms",
+        "sourdough",
+        "garlic",
+        "thyme",
+        "cream cheese"
+      ],
+      "onePot": false,
+      "onePan": true,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-mushroom-toast",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 5,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": true,
+      "singleVessel": true,
+      "tags": [
+        "british",
+        "easy",
+        "main",
+        "quick_16_30",
+        "toast",
+        "vegetarian"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-lentil-curry",
+      "name": "Lantern Lentil Curry",
+      "chef": "Mira Ashspoon",
+      "cuisines": [
+        "Indian-inspired"
+      ],
+      "proteins": [
+        "legumes"
+      ],
+      "dishTypes": [
+        "main",
+        "curry",
+        "one_pot"
+      ],
+      "dietary": [
+        "vegan"
+      ],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 40,
+      "estimatedHandsOnMinutes": 20,
+      "timeCategory": "weeknight_31_60",
+      "keyIngredients": [
+        "red lentils",
+        "coconut milk",
+        "tomatoes",
+        "ginger",
+        "garlic",
+        "curry spices"
+      ],
+      "onePot": true,
+      "onePan": false,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-lentil-curry",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 6,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": true,
+      "singleVessel": true,
+      "tags": [
+        "curry",
+        "easy",
+        "indian_inspired",
+        "legumes",
+        "main",
+        "one_pot",
+        "vegan",
+        "weeknight_31_60"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-knight-traybake",
+      "name": "Knight's Night-Off Traybake",
+      "chef": "Rowan Fieldguide",
+      "cuisines": [
+        "British"
+      ],
+      "proteins": [
+        "chicken"
+      ],
+      "dishTypes": [
+        "main",
+        "traybake"
+      ],
+      "dietary": [],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 50,
+      "estimatedHandsOnMinutes": 15,
+      "timeCategory": "weeknight_31_60",
+      "keyIngredients": [
+        "chicken thighs",
+        "potatoes",
+        "carrots",
+        "lemon",
+        "thyme",
+        "olive oil"
+      ],
+      "onePot": false,
+      "onePan": false,
+      "traybake": true,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-knight-traybake",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 6,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": false,
+      "singleVessel": true,
+      "tags": [
+        "british",
+        "chicken",
+        "easy",
+        "main",
+        "traybake",
+        "weeknight_31_60"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-green-pasta",
+      "name": "Elf's Suspiciously Green Pasta",
+      "chef": "Tilda Panwarden",
+      "cuisines": [
+        "Italian-inspired"
+      ],
+      "proteins": [
+        "vegetarian"
+      ],
+      "dishTypes": [
+        "main",
+        "pasta"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 25,
+      "estimatedHandsOnMinutes": 20,
+      "timeCategory": "quick_16_30",
+      "keyIngredients": [
+        "pasta",
+        "broccoli",
+        "spinach",
+        "basil",
+        "lemon",
+        "Parmesan"
+      ],
+      "onePot": false,
+      "onePan": false,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-green-pasta",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 6,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": false,
+      "singleVessel": false,
+      "tags": [
+        "easy",
+        "italian_inspired",
+        "main",
+        "pasta",
+        "quick_16_30",
+        "vegetarian"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-onion-soup",
+      "name": "Dwarf's Three-Onion Soup",
+      "chef": "Bramble Kettle",
+      "cuisines": [
+        "French-inspired"
+      ],
+      "proteins": [
+        "vegetarian"
+      ],
+      "dishTypes": [
+        "main",
+        "soup",
+        "one_pot"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "difficulty": "easy_moderate",
+      "estimatedTotalMinutes": 65,
+      "estimatedHandsOnMinutes": 30,
+      "timeCategory": "longer_or_passive",
+      "keyIngredients": [
+        "onions",
+        "shallots",
+        "leeks",
+        "stock",
+        "thyme",
+        "bread",
+        "cheese"
+      ],
+      "onePot": true,
+      "onePan": false,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-onion-soup",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 7,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": true,
+      "singleVessel": true,
+      "tags": [
+        "easy_moderate",
+        "french_inspired",
+        "longer_or_passive",
+        "main",
+        "one_pot",
+        "soup",
+        "vegetarian"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-campfire-salmon",
+      "name": "Campfire Salmon with Charred Lemon",
+      "chef": "Nell Copperladle",
+      "cuisines": [
+        "Mediterranean-inspired"
+      ],
+      "proteins": [
+        "salmon"
+      ],
+      "dishTypes": [
+        "main",
+        "one_pan"
+      ],
+      "dietary": [
+        "pescatarian"
+      ],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 25,
+      "estimatedHandsOnMinutes": 20,
+      "timeCategory": "quick_16_30",
+      "keyIngredients": [
+        "salmon",
+        "lemon",
+        "green beans",
+        "garlic",
+        "olive oil"
+      ],
+      "onePot": false,
+      "onePan": true,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-campfire-salmon",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 5,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": true,
+      "singleVessel": true,
+      "tags": [
+        "easy",
+        "main",
+        "mediterranean_inspired",
+        "one_pan",
+        "pescatarian",
+        "quick_16_30",
+        "salmon"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-rice-bowl",
+      "name": "Rat-Free Sesame Rice Bowl",
+      "chef": "Nell Copperladle",
+      "cuisines": [
+        "Japanese-inspired"
+      ],
+      "proteins": [
+        "eggs"
+      ],
+      "dishTypes": [
+        "main",
+        "rice"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 20,
+      "estimatedHandsOnMinutes": 20,
+      "timeCategory": "quick_16_30",
+      "keyIngredients": [
+        "rice",
+        "eggs",
+        "cucumber",
+        "carrot",
+        "soy sauce",
+        "sesame"
+      ],
+      "onePot": false,
+      "onePan": false,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-rice-bowl",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 6,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": false,
+      "singleVessel": false,
+      "tags": [
+        "easy",
+        "eggs",
+        "japanese_inspired",
+        "main",
+        "quick_16_30",
+        "rice",
+        "vegetarian"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-pea-soup",
+      "name": "Potion-Seller's Pea Soup",
+      "chef": "Tilda Panwarden",
+      "cuisines": [
+        "British"
+      ],
+      "proteins": [
+        "legumes"
+      ],
+      "dishTypes": [
+        "main",
+        "soup",
+        "one_pot"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 15,
+      "estimatedHandsOnMinutes": 15,
+      "timeCategory": "very_quick_under_15",
+      "keyIngredients": [
+        "peas",
+        "mint",
+        "onion",
+        "vegetable stock",
+        "crème fraîche"
+      ],
+      "onePot": true,
+      "onePan": false,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-pea-soup",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 5,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": true,
+      "singleVessel": true,
+      "tags": [
+        "british",
+        "easy",
+        "legumes",
+        "main",
+        "one_pot",
+        "soup",
+        "vegetarian",
+        "very_quick_under_15"
+      ],
+      "selectionBatch": "demo"
+    },
+    {
+      "id": "demo-shakshuka",
+      "name": "Last-Ration Shakshuka",
+      "chef": "Mira Ashspoon",
+      "cuisines": [
+        "Middle Eastern-inspired"
+      ],
+      "proteins": [
+        "eggs"
+      ],
+      "dishTypes": [
+        "main",
+        "brunch",
+        "one_pan"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "difficulty": "easy",
+      "estimatedTotalMinutes": 30,
+      "estimatedHandsOnMinutes": 20,
+      "timeCategory": "quick_16_30",
+      "keyIngredients": [
+        "eggs",
+        "tinned tomatoes",
+        "peppers",
+        "onion",
+        "garlic",
+        "cumin"
+      ],
+      "onePot": false,
+      "onePan": true,
+      "traybake": false,
+      "authorType": "cookbook_author",
+      "sourceSite": "Demo field guide",
+      "sourceUrl": "https://example.invalid/campfire-codex/demo-shakshuka",
+      "sourceType": "demo",
+      "sourceAttributionVerified": false,
+      "timeBasis": "demo",
+      "handsOnTimeBasis": "demo",
+      "sourceTimeNote": null,
+      "passiveTimeNote": null,
+      "normalizedKeyIngredientCount": 6,
+      "under10KeyIngredients": true,
+      "tenOrFewerKeyIngredients": true,
+      "sainsburysAvailability": "high",
+      "specialtyIngredients": [],
+      "onePotOrPan": true,
+      "singleVessel": true,
+      "tags": [
+        "brunch",
+        "easy",
+        "eggs",
+        "main",
+        "middle_eastern_inspired",
+        "one_pan",
+        "quick_16_30",
+        "vegetarian"
+      ],
+      "selectionBatch": "demo"
+    }
+  ]
+}

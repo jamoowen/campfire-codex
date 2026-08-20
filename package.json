@@ -1,0 +1,49 @@
+{
+  "name": "campfire-codex",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": ">=11.22.0"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "tsc -b && vite build",
+    "preview": "pnpm build && vite preview",
+    "deploy": "pnpm check && vite build && wrangler deploy",
+    "check": "tsc -b && pnpm test && pnpm privacy:check && pnpm recipes:verify-demo",
+    "test": "vitest run",
+    "clean": "node scripts/clean.mjs",
+    "types:worker": "wrangler types",
+    "cf:login": "wrangler login",
+    "cf:whoami": "wrangler whoami",
+    "cloudflare:setup": "node scripts/cloudflare-setup.mjs",
+    "r2:create": "wrangler r2 bucket create campfire-codex-recipes",
+    "r2:info": "wrangler r2 bucket info campfire-codex-recipes",
+    "recipes:build": "node scripts/build-recipes.mjs",
+    "recipes:verify-demo": "node scripts/verify-catalog.mjs data/demo-catalog.json",
+    "recipes:seed:local": "node scripts/upload-recipes.mjs --local",
+    "recipes:upload": "node scripts/upload-recipes.mjs --remote",
+    "recipes:update": "pnpm recipes:upload",
+    "privacy:check": "node scripts/privacy-check.mjs"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.53.0",
+    "@cloudflare/vitest-pool-workers": "0.22.0",
+    "@cloudflare/workers-types": "5.20260819.1",
+    "@types/node": "26.2.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.1.0",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "4.1.0",
+    "wrangler": "4.124.0"
+  }
+}

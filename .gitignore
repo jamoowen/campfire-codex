@@ -1,0 +1,21 @@
+node_modules/
+.pnpm-store/
+dist/
+.wrangler/
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+!.env.example
+
+# The actual recipe collection must never enter the public repository.
+/private/*.json
+!/private/*.example.json
+
+# Generated from private recipe data; never commit it.
+/.recipe-build/*
+!/.recipe-build/.gitkeep
+
+*.tsbuildinfo
+.DS_Store
+docs/reference/design-concept.webp

@@ -1,0 +1,44 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "campfire-codex",
+	"main": "./worker/index.ts",
+	"compatibility_date": "2026-08-20",
+	"workers_dev": true,
+	"preview_urls": true,
+	"assets": {
+		"not_found_handling": "single-page-application",
+		"run_worker_first": [
+			"/api/*"
+		]
+	},
+	"r2_buckets": [
+		{
+			"binding": "RECIPES",
+			"bucket_name": "campfire-codex-recipes"
+		}
+	],
+	"ratelimits": [
+		{
+			"name": "SEARCH_RATE_LIMITER",
+			"namespace_id": "77101",
+			"simple": {
+				"limit": 60,
+				"period": 60
+			}
+		},
+		{
+			"name": "DETAIL_RATE_LIMITER",
+			"namespace_id": "77102",
+			"simple": {
+				"limit": 30,
+				"period": 60
+			}
+		}
+	],
+	"vars": {
+		"APP_ENV": "production"
+	},
+	"observability": {
+		"enabled": true
+	}
+}
