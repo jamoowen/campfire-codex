@@ -1,7 +1,7 @@
 {
   "name": "Campfire Codex",
   "short_name": "Codex",
-  "description": "A private-catalog recipe finder for humans with pans and questionable judgement.",
+  "description": "A no-ads recipe finder for humans with pans and questionable judgement.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0c0907",

@@ -6,7 +6,7 @@ This file is the operating brief for coding agents working in this repository. R
 
 Campfire Codex is a small, warm, campfire-and-dungeon recipe finder for personal/non-commercial use. The tone is concise, dry, sardonic, and affectionate rather than loud or meme-heavy.
 
-The visual mood may be informed by cosy fantasy cooking stories, but this must remain an original product. Do not use franchise names, logos, characters, copied layouts, or imitation title treatments in the public interface.
+The visual mood may be informed by cosy fantasy cooking stories, but this must remain an original product.
 
 ## Non-negotiable behavior
 
@@ -63,6 +63,7 @@ Files of interest:
 
 - `private/recipes.json`
 - `private/schema-and-tags.json`
+- `private/pop-culture-index.json`
 - `.recipe-build/`
 - `.wrangler/`
 
@@ -129,6 +130,7 @@ Returns at most 24 summaries per page. Current query support:
 - single vessel
 - one pot or pan
 - traybake
+- screen food
 - sort and pagination
 
 Do not add a bulk `all-recipes`, export, GraphQL introspection, or unrestricted cursor endpoint.
@@ -181,7 +183,6 @@ Avoid:
 - bento-card spam
 - tiny low-contrast text
 - novelty medieval fonts for body copy
-- franchise marks or copied character art
 - fake RPG statistics that do not help recipe finding
 
 ### Voice

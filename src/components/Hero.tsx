@@ -59,14 +59,13 @@ export function Hero({ query, onQueryChange, dataset, source }: HeroProps) {
           </span>
           <span>
             <ShieldIcon />
-            private R2 catalogue
+            No ads. No tracking.
           </span>
         </div>
         {source === 'demo' ? (
           <p className="demo-notice">
-            Demo provisions are showing. Seed local R2 or upload your private
-            catalogue to summon all{' '}
-            {dataset?.recipeCount === 12 ? '300' : 'your'} recipes.
+            The pantry is down to its emergency rations. The full collection
+            will return shortly.
           </p>
         ) : null}
       </div>

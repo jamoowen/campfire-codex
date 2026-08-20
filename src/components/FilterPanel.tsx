@@ -7,6 +7,7 @@ interface FilterPanelProps {
   facets: CatalogFacets | null;
   open: boolean;
   activeCount: number;
+  screenFoodAvailable: boolean;
   onToggle: () => void;
   onChange: (patch: Partial<SearchFilters>) => void;
   onReset: () => void;
@@ -76,6 +77,7 @@ export function FilterPanel({
   facets,
   open,
   activeCount,
+  screenFoodAvailable,
   onToggle,
   onChange,
   onReset,
@@ -128,6 +130,14 @@ export function FilterPanel({
             detail="Put it in. Walk away."
             onChange={(traybake) => onChange({ traybake })}
           />
+          {screenFoodAvailable ? (
+            <ToggleRune
+              checked={filters.screenFood}
+              label="Screen food"
+              detail="Film, TV & games"
+              onChange={(screenFood) => onChange({ screenFood })}
+            />
+          ) : null}
         </div>
         <div className="facet-grid">
           <FacetSelect

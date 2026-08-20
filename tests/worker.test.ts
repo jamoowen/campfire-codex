@@ -47,6 +47,14 @@ beforeAll(async () => {
   Object.assign(recipes[0]!, {
     method: 'private method',
     instructions: ['private instructions'],
+    pop_culture: true,
+    screen_title: 'Private title',
+    screenReference: {
+      title: 'The Ember Road',
+      type: 'film',
+      relationship: 'professional_recreation',
+      source_locator: 'private locator',
+    },
   });
   const catalog: CatalogPayload = {
     schemaVersion: 1,
@@ -56,6 +64,7 @@ beforeAll(async () => {
       recipeCount: recipes.length,
       authorCount: 1,
       sourceSiteCount: 1,
+      screenFoodCount: 1,
       generatedAt: '2026-01-01T00:00:00.000Z',
       isDemo: false,
       note: 'test',
@@ -97,6 +106,29 @@ describe('Worker API', () => {
     expect(body.pageSize).toBe(24);
     expect(body.items).toHaveLength(24);
     expect(body.items[0]).not.toHaveProperty('sourceUrl');
+    expect(body.items[0]?.screenReference).not.toHaveProperty('source_locator');
+    expect(body.items[0]).not.toHaveProperty('pop_culture');
+    expect(body.items[0]).not.toHaveProperty('screen_title');
+  });
+
+  it('filters screen food and lets people search the screen title', async () => {
+    const filtered = await SELF.fetch(
+      'http://localhost/api/search?screenFood=1',
+    );
+    const filteredBody = await filtered.json<{
+      items: Array<Record<string, unknown>>;
+      total: number;
+    }>();
+    expect(filteredBody.total).toBe(1);
+    expect(filteredBody.items[0]?.screenReference).toEqual({
+      title: 'The Ember Road',
+      type: 'film',
+      relationship: 'professional_recreation',
+    });
+
+    const searched = await SELF.fetch('http://localhost/api/search?q=ember');
+    const searchedBody = await searched.json<{ total: number }>();
+    expect(searchedBody.total).toBe(1);
   });
 
   it('projects R2 recipe details through an allowlist', async () => {
@@ -104,6 +136,14 @@ describe('Worker API', () => {
     const body = await response.json<Record<string, unknown>>();
     expect(body).not.toHaveProperty('method');
     expect(body).not.toHaveProperty('instructions');
+    expect(body).not.toHaveProperty('pop_culture');
+    expect(body).not.toHaveProperty('screen_title');
+    expect(body.screenReference).toEqual({
+      title: 'The Ember Road',
+      type: 'film',
+      relationship: 'professional_recreation',
+    });
+    expect(body.screenReference).not.toHaveProperty('source_locator');
     expect(body.sourceUrl).toBe('https://example.test/recipe-1');
   });
 

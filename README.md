@@ -68,7 +68,9 @@ shared/recipe.ts           Shared TypeScript data contracts
 private/recipes.json       Your source data; ignored by Git
 private/schema-and-tags.json
                             Companion schema; ignored by Git
-scripts/build-recipes.mjs  Normalizes and validates private data
+private/pop-culture-index.json
+                            Curated screen-food references; ignored by Git
+scripts/build-recipes.mjs  Normalizes recipes and validates screen-food references
 scripts/upload-recipes.mjs Uploads one private R2 object
 public/robots.txt          Crawler directives
 public/_headers            CSP, no-index, and security headers
@@ -87,4 +89,6 @@ Before enabling deployment, add these production environment secrets in GitHub: 
 - `CLOUDFLARE_API_TOKEN`: a Cloudflare API token scoped to the intended account with **Edit Cloudflare Workers** permission. Create it in Cloudflare's API Tokens page and restrict its account/resource scope to this project where the dashboard allows it.
 - `CLOUDFLARE_ACCOUNT_ID`: the target Cloudflare account ID (not a secret in the cryptographic sense, but kept in GitHub Secrets so the workflow has one configuration path).
 
-The importer rejects empty/non-array key ingredients and IDs that cannot be routed safely. Catalogue verification also checks IDs, canonical HTTP(S) source URLs, required ingredients, and forbidden full-method fields. The privacy check rejects forbidden private, generated, and local Wrangler-state paths even when they were force-added to Git.
+The `campfire-codex.owentech.xyz` Workers Custom Domain is source-controlled in `wrangler.jsonc`. Its `owentech.xyz` zone must be Active in Cloudflare; a dashboard or CI deployment then provisions its DNS and certificate. Do not create an independent `campfire-codex` DNS record before that provisioning. Warnings about root, `www`, or domain email are unrelated unless the owner also intends to host those names or receive mail there. Scope the GitHub token to the intended Cloudflare account and zone with **Edit Cloudflare Workers** permission.
+
+The importer rejects empty/non-array key ingredients and IDs that cannot be routed safely. It validates the curated private screen-food index against the catalogue before emitting compact title/type/relationship references. Catalogue verification also checks IDs, canonical HTTP(S) source URLs, required ingredients, and forbidden full-method fields. The privacy check rejects forbidden private, generated, and local Wrangler-state paths even when they were force-added to Git.

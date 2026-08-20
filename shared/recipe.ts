@@ -5,6 +5,15 @@ export type TimeCategory =
   | 'weeknight_31_60'
   | 'longer_or_passive';
 export type Availability = 'high' | 'medium';
+export type ScreenType = 'film' | 'tv' | 'video_game';
+export type ScreenRelationship =
+  'creator_demonstrated' | 'professional_recreation';
+
+export interface ScreenReference {
+  title: string;
+  type: ScreenType;
+  relationship: ScreenRelationship;
+}
 
 export interface RecipeRecord {
   id: string;
@@ -38,6 +47,7 @@ export interface RecipeRecord {
   onePotOrPan: boolean;
   traybake: boolean;
   singleVessel: boolean;
+  screenReference?: ScreenReference;
   tags: string[];
   selectionBatch: string;
 }
@@ -64,6 +74,7 @@ export type RecipeSummary = Pick<
   | 'onePan'
   | 'traybake'
   | 'singleVessel'
+  | 'screenReference'
 >;
 
 export interface FacetValue {
@@ -88,6 +99,7 @@ export interface CatalogDataset {
   recipeCount: number;
   authorCount: number;
   sourceSiteCount: number;
+  screenFoodCount?: number;
   generatedAt: string;
   isDemo: boolean;
   note: string;

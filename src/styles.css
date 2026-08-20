@@ -703,7 +703,7 @@ a {
 
 .quick-runes {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -1167,6 +1167,17 @@ a {
   line-height: 1.52;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+.recipe-card__screen {
+  margin-top: 7px;
+  overflow: hidden;
+  color: #bba77b;
+  font-size: 0.68rem;
+  font-weight: 760;
+  letter-spacing: 0.03em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .recipe-card__meta {
@@ -1729,6 +1740,24 @@ a {
 .source-notes p {
   color: #8e795d;
   font-size: 0.73rem;
+  line-height: 1.55;
+}
+
+.screen-food {
+  border-top-color: rgb(214 165 83 / 28%);
+}
+
+.screen-food__title {
+  margin-bottom: 8px;
+  color: #d8b978;
+  font-size: 0.78rem;
+  font-weight: 760;
+}
+
+.screen-food p:last-child {
+  margin: 0;
+  color: #9d8869;
+  font-size: 0.75rem;
   line-height: 1.55;
 }
 

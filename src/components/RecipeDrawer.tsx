@@ -51,6 +51,11 @@ export function RecipeDrawer({
   const externalAvailable = recipe
     ? !new URL(recipe.sourceUrl).hostname.endsWith('.invalid')
     : false;
+  const screenFoodNote = recipe?.screenReference
+    ? recipe.screenReference.relationship === 'creator_demonstrated'
+      ? `The creator behind ${recipe.screenReference.title} directly demonstrated or supplied this dish.`
+      : `${recipe.chef} professionally recreated or interpreted this dish in response to ${recipe.screenReference.title}.`
+    : null;
 
   return (
     <Modal
@@ -128,6 +133,17 @@ export function RecipeDrawer({
                 Cooked it again
               </button>
             </div>
+          ) : null}
+
+          {recipe.screenReference && screenFoodNote ? (
+            <section className="drawer-section screen-food">
+              <h3>Screen food</h3>
+              <p className="screen-food__title">
+                From {recipe.screenReference.title} ·{' '}
+                {humanize(recipe.screenReference.type)}
+              </p>
+              <p>{screenFoodNote}</p>
+            </section>
           ) : null}
 
           <section className="rating-panel" aria-labelledby="rating-title">

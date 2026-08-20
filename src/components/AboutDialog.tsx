@@ -25,49 +25,47 @@ export function AboutDialog({
         <CloseIcon />
       </button>
       <Brand />
-      <h2 id="about-title">
-        A small recipe index with an unnecessarily dramatic fireplace.
-      </h2>
+      <h2 id="about-title">A recipe index. No consent circus.</h2>
       <p>
-        The recipe catalogue lives in a private Cloudflare R2 bucket. Search
-        results expose only the metadata needed for this interface. Full methods
-        remain on each author or publisher's canonical page.
+        Find something to cook without being followed around the internet by a
+        saucepan you glanced at once. No account, no adverts, no pop-up asking
+        for a life story.
       </p>
       <div className="about-grid">
         <section>
-          <h3>No account</h3>
+          <h3>No sign-up quest</h3>
           <p>
-            Saved recipes, cooked history and ratings stay in this browser's
-            localStorage.
+            Save recipes, mark your victories and hand out stars. It stays on
+            this device. No inbox ritual required.
           </p>
         </section>
         <section>
-          <h3>No public data dump</h3>
+          <h3>No advert ambush</h3>
           <p>
-            The source JSON is ignored by Git and uploaded directly to private
-            R2.
+            No autoplaying videos, affiliate maze or banner ad parked between
+            you and dinner.
           </p>
         </section>
         <section>
-          <h3>Bot-hostile by design</h3>
+          <h3>No tracking</h3>
           <p>
-            Strict robots rules, no-index headers, same-origin API checks and
-            Worker rate limits.
+            No cookie-consent theatre because there is no tracking scheme to
+            consent to. A rare administrative victory.
           </p>
         </section>
         <section>
-          <h3>No illusions</h3>
+          <h3>The recipes stay theirs</h3>
           <p>
-            Anything a human browser can see can eventually be scraped. The goal
-            is deterrence, not magic.
+            Ingredients are here to help you search. The full recipe lives with
+            its author, where it belongs.
           </p>
         </section>
       </div>
       <div className="about-security">
         <ShieldIcon />
         <span>
-          For maximum protection, enable Bot Fight Mode and block Search, Agent
-          and Training crawlers in Cloudflare AI Crawl Control.
+          Dinner is difficult enough. Finding it should not require a privacy
+          policy, a password or a minor act of faith.
         </span>
       </div>
     </Modal>
