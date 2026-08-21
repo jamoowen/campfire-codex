@@ -4,6 +4,10 @@ import {
   applyScreenReferences,
   normalizeScreenFoodIndex,
 } from '../scripts/screen-food.mjs';
+import {
+  applyRecipeExclusions,
+  normalizeRecipeExclusions,
+} from '../scripts/recipe-exclusions.mjs';
 
 const validRecipe = {
   id: 'campfire.stew-1',
@@ -41,6 +45,39 @@ describe('recipe importer normalization', () => {
     expect(() =>
       normalizeRecipe({ ...validRecipe, id: 'not/a-route' }, 0),
     ).toThrow(/invalid id/);
+  });
+
+  it('applies validated reversible recipe exclusions', () => {
+    const recipes = [normalizeRecipe(validRecipe, 0)];
+    const exclusions = normalizeRecipeExclusions({
+      title: 'Non-meals',
+      recipe_count: 1,
+      recipes: [{ id: validRecipe.id, reason: 'drink' }],
+    });
+    expect(applyRecipeExclusions(recipes, exclusions)).toEqual([]);
+  });
+
+  it('rejects malformed, duplicate, and unknown recipe exclusions', () => {
+    expect(() =>
+      normalizeRecipeExclusions({
+        title: 'Bad',
+        recipe_count: 1,
+        recipes: [{ id: validRecipe.id, reason: ' ' }],
+      }),
+    ).toThrow(/invalid/);
+
+    expect(() =>
+      normalizeRecipeExclusions({
+        title: 'Bad',
+        recipe_count: 2,
+        recipes: [
+          { id: validRecipe.id, reason: 'drink' },
+          { id: validRecipe.id, reason: 'drink' },
+        ],
+      }),
+    ).toThrow(/Duplicate/);
+    const exclusions = new Map([['unknown-id', 'drink']]);
+    expect(() => applyRecipeExclusions([], exclusions)).toThrow(/unknown/);
   });
 
   it('uses the curated screen-food index as the public reference source', () => {

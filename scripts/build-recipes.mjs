@@ -4,6 +4,10 @@ import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { label, normalizeRecipe } from './recipe-normalization.mjs';
 import {
+  applyRecipeExclusions,
+  normalizeRecipeExclusions,
+} from './recipe-exclusions.mjs';
+import {
   applyScreenReferences,
   normalizeScreenFoodIndex,
 } from './screen-food.mjs';
@@ -17,6 +21,7 @@ const screenFoodIndexPath = path.resolve(
   root,
   process.argv[3] ?? 'private/pop-culture-index.json',
 );
+const exclusionsPath = path.join(root, 'private/recipe-exclusions.json');
 const outputDir = path.join(root, '.recipe-build');
 const outputPath = path.join(outputDir, 'catalog-v1.json');
 const reportPath = path.join(outputDir, 'report.json');
@@ -48,7 +53,13 @@ if (rawRecipes.length > 10_000) {
   throw new Error('This minimal R2 catalogue supports at most 10,000 recipes.');
 }
 
-const baseRecipes = rawRecipes.map(normalizeRecipe);
+const exclusions = normalizeRecipeExclusions(
+  JSON.parse(await readFile(exclusionsPath, 'utf8')),
+);
+const baseRecipes = applyRecipeExclusions(
+  rawRecipes.map(normalizeRecipe),
+  exclusions,
+);
 const screenFoodIndex = normalizeScreenFoodIndex(
   JSON.parse(await readFile(screenFoodIndexPath, 'utf8')),
 );
@@ -98,6 +109,7 @@ const report = {
   authorCount: authors.size,
   sourceSiteCount: sourceSites.size,
   screenFoodCount: recipes.filter((recipe) => recipe.screenReference).length,
+  excludedCount: exclusions.size,
   quick30OrLess: recipes.filter(
     (recipe) =>
       recipe.estimatedTotalMinutes > 0 && recipe.estimatedTotalMinutes <= 30,

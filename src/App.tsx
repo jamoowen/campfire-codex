@@ -314,21 +314,21 @@ export default function App() {
 
   return (
     <div className="site-frame">
+      <AppHeader
+        view={view}
+        onViewChange={(next) => {
+          setView(next);
+          window.requestAnimationFrame(() =>
+            document
+              .getElementById('recipes')
+              ?.scrollIntoView({ behavior: 'smooth' }),
+          );
+        }}
+        onAbout={() => setAboutOpen(true)}
+        savedCount={journal.savedIds.length}
+        cookedCount={journal.cookedIds.length}
+      />
       <div className="hero-stack">
-        <AppHeader
-          view={view}
-          onViewChange={(next) => {
-            setView(next);
-            window.requestAnimationFrame(() =>
-              document
-                .getElementById('recipes')
-                ?.scrollIntoView({ behavior: 'smooth' }),
-            );
-          }}
-          onAbout={() => setAboutOpen(true)}
-          savedCount={journal.savedIds.length}
-          cookedCount={journal.cookedIds.length}
-        />
         <Hero
           query={filters.query}
           onQueryChange={(query) => patchFilters({ query })}

@@ -64,6 +64,7 @@ Files of interest:
 - `private/recipes.json`
 - `private/schema-and-tags.json`
 - `private/pop-culture-index.json`
+- `private/recipe-exclusions.json` (reversible curation list; source recipes remain unchanged)
 - `.recipe-build/`
 - `.wrangler/`
 

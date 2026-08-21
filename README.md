@@ -70,6 +70,8 @@ private/schema-and-tags.json
                             Companion schema; ignored by Git
 private/pop-culture-index.json
                             Curated screen-food references; ignored by Git
+private/recipe-exclusions.json
+                            Reversible private curation list; source recipes remain unchanged
 scripts/build-recipes.mjs  Normalizes recipes and validates screen-food references
 scripts/upload-recipes.mjs Uploads one private R2 object
 public/robots.txt          Crawler directives
