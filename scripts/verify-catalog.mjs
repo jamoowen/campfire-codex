@@ -18,8 +18,26 @@ if (catalog.dataset?.recipeCount !== catalog.recipes.length) {
 }
 
 const ids = new Set();
-const forbidden = ['method', 'methods', 'instructions', 'directions', 'steps'];
+const forbidden = [
+  'method',
+  'methods',
+  'instructions',
+  'directions',
+  'steps',
+  'pop_culture',
+  'screen_origin',
+  'screen_relationship',
+  'screen_title',
+  'screen_type',
+  'source_locator',
+  'source_search_url',
+];
 const routeSafeId = /^[A-Za-z0-9._-]{1,100}$/;
+const screenTypes = new Set(['film', 'tv', 'video_game']);
+const screenRelationships = new Set([
+  'creator_demonstrated',
+  'professional_recreation',
+]);
 for (const recipe of catalog.recipes) {
   for (const field of ['id', 'name', 'chef', 'sourceUrl']) {
     if (typeof recipe[field] !== 'string' || recipe[field].length === 0) {
@@ -52,6 +70,28 @@ for (const recipe of catalog.recipes) {
     )
   ) {
     throw new Error(`Recipe ${recipe.id} has invalid keyIngredients.`);
+  }
+  if (recipe.screenReference != null) {
+    const reference = recipe.screenReference;
+    if (
+      !reference ||
+      typeof reference !== 'object' ||
+      typeof reference.title !== 'string' ||
+      reference.title.trim() === '' ||
+      !screenTypes.has(reference.type) ||
+      !screenRelationships.has(reference.relationship)
+    ) {
+      throw new Error(`Recipe ${recipe.id} has invalid screenReference.`);
+    }
+    if (
+      Object.keys(reference).some(
+        (key) => !['title', 'type', 'relationship'].includes(key),
+      )
+    ) {
+      throw new Error(
+        `Recipe ${recipe.id} screenReference contains an unsupported field.`,
+      );
+    }
   }
 }
 

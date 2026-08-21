@@ -206,6 +206,7 @@ function recipeSearchText(recipe: RecipeRecord) {
       ...recipe.dishTypes,
       ...recipe.dietary,
       ...recipe.keyIngredients,
+      recipe.screenReference?.title ?? '',
       ...recipe.tags,
     ].join(' '),
   );
@@ -249,6 +250,13 @@ function toSummary(recipe: RecipeRecord): RecipeSummary {
     onePan: recipe.onePan,
     traybake: recipe.traybake,
     singleVessel: recipe.singleVessel,
+    screenReference: recipe.screenReference
+      ? {
+          title: recipe.screenReference.title,
+          type: recipe.screenReference.type,
+          relationship: recipe.screenReference.relationship,
+        }
+      : undefined,
   };
 }
 
@@ -285,6 +293,13 @@ function toRecipeRecord(recipe: RecipeRecord): RecipeRecord {
     onePotOrPan: recipe.onePotOrPan,
     traybake: recipe.traybake,
     singleVessel: recipe.singleVessel,
+    screenReference: recipe.screenReference
+      ? {
+          title: recipe.screenReference.title,
+          type: recipe.screenReference.type,
+          relationship: recipe.screenReference.relationship,
+        }
+      : undefined,
     tags: recipe.tags,
     selectionBatch: recipe.selectionBatch,
   };
@@ -339,6 +354,8 @@ function filterAndSort(recipes: RecipeRecord[], url: URL) {
       return false;
     if (params.get('onePotOrPan') === '1' && !recipe.onePotOrPan) return false;
     if (params.get('traybake') === '1' && !recipe.traybake) return false;
+    if (params.get('screenFood') === '1' && !recipe.screenReference)
+      return false;
     return true;
   });
 

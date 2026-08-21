@@ -38,6 +38,7 @@ const initialFilters: SearchFilters = {
   singleVessel: false,
   onePotOrPan: false,
   traybake: false,
+  screenFood: false,
   sort: 'relevance',
 };
 
@@ -118,6 +119,7 @@ export default function App() {
       filters.singleVessel,
       filters.onePotOrPan,
       filters.traybake,
+      filters.screenFood,
     ].filter(Boolean).length;
   }, [filters]);
 
@@ -347,6 +349,7 @@ export default function App() {
           facets={meta?.facets ?? null}
           open={filtersOpen}
           activeCount={activeFilterCount}
+          screenFoodAvailable={Boolean(meta?.dataset.screenFoodCount)}
           onToggle={() => setFiltersOpen((current) => !current)}
           onChange={patchFilters}
           onReset={resetFilters}
@@ -474,7 +477,7 @@ export default function App() {
           <span>Campfire Codex</span>
           <p>Great meals need neither magic nor an account. A pan helps.</p>
           <button type="button" onClick={() => setAboutOpen(true)}>
-            How this stays private-ish
+            What’s the catch?
           </button>
         </div>
       </footer>

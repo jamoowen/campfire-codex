@@ -20,6 +20,7 @@ export interface SearchFilters {
   singleVessel: boolean;
   onePotOrPan: boolean;
   traybake: boolean;
+  screenFood: boolean;
   sort: 'relevance' | 'fastest' | 'fewest' | 'author' | 'title' | 'collection';
 }
 
@@ -86,6 +87,7 @@ export async function searchRecipes(
   if (filters.singleVessel) params.set('singleVessel', '1');
   if (filters.onePotOrPan) params.set('onePotOrPan', '1');
   if (filters.traybake) params.set('traybake', '1');
+  if (filters.screenFood) params.set('screenFood', '1');
   if (ids.length > 0) params.set('ids', ids.slice(0, 100).join(','));
 
   const response = await fetch(`/api/search?${params.toString()}`, {

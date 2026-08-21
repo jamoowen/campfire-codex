@@ -68,6 +68,11 @@ export function RecipeCard({
         <span className="recipe-card__content">
           <span className="recipe-card__eyeline">by {recipe.chef}</span>
           <strong>{recipe.name}</strong>
+          {recipe.screenReference ? (
+            <span className="recipe-card__screen">
+              From {recipe.screenReference.title}
+            </span>
+          ) : null}
           <span className="recipe-card__blurb">{recipeBlurb(recipe)}</span>
           <span className="recipe-card__meta">
             <span>

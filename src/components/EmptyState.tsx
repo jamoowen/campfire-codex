@@ -39,7 +39,7 @@ export function EmptyState({
       <p>
         {filtered
           ? 'Remove a filter or use fewer adjectives.'
-          : 'Upload the private catalogue and try again.'}
+          : 'The shelves are temporarily bare. Try again shortly.'}
       </p>
     </div>
   );
